@@ -12,8 +12,13 @@ import io.qio.qa.lib.connection.ConnectionResponse;
 public class MUserGroupAPIHelper extends MBaseAPIHelper {
 	private final String createOrUpdateUserGroupEndpoint = "/groups";
 	private final String getOrDeleteSingleUserGroupEndpointAbstract = "/groups/{userGroupId}";
+	private final String getUserGroupsEndpointsByNameAbstract = "/groups/search/findByNameLike?name={userGroupName}";
 	private final String getAllUserGroupsEndpoint = "/groups";
 
+	public String getUserGroupsEndpointsByNameAbstract () {
+		return getUserGroupsEndpointsByNameAbstract;
+	}
+	
 	public String getGetOrDeleteSingleUserGroupEndpointAbstract() {
 		return getOrDeleteSingleUserGroupEndpointAbstract;
 	}
@@ -34,12 +39,21 @@ public class MUserGroupAPIHelper extends MBaseAPIHelper {
 		return super.retrieve(microservice, environment, getAllUserGroupsEndpoint, apiRequestHeaders);
 	}
 
-	public ConnectionResponse retrieve(String microservice, String environment, String userGroupId, APIRequestHelper apiRequestHeaders) {
-		return super.retrieve(microservice, environment, replaceUserGroupIdInSingleUserGroupEndpoint(userGroupId), apiRequestHeaders);
+//	public ConnectionResponse retrieve(String microservice, String environment, String userGroupId, APIRequestHelper apiRequestHeaders) {
+//		return super.retrieve(microservice, environment, replaceUserGroupIdInSingleUserGroupEndpoint(userGroupId), apiRequestHeaders);
+//	}
+	
+	public ConnectionResponse retrieve(String microservice, String environment, String userGroupName, APIRequestHelper apiRequestHeaders) {
+		return super.retrieve(microservice, environment, replaceUserGroupNameInUserGroupByNameEndpoint(userGroupName), apiRequestHeaders);
 	}
 
 	protected String replaceUserGroupIdInSingleUserGroupEndpoint(String userGroupId) {
 		String singleUserGroupEndpoint = getOrDeleteSingleUserGroupEndpointAbstract.replace("{userGroupId}", userGroupId);
 		return singleUserGroupEndpoint;
+	}
+	
+	protected String replaceUserGroupNameInUserGroupByNameEndpoint(String userGroupId) {
+		String userGroupsEndpoint = getUserGroupsEndpointsByNameAbstract.replace("{userGroupName}", userGroupId);
+		return userGroupsEndpoint;
 	}
 }
