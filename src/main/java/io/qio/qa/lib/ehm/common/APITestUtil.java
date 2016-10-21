@@ -7,7 +7,7 @@ package io.qio.qa.lib.ehm.common;
 import io.qio.qa.lib.apiHelpers.APIRequestHelper;
 import io.qio.qa.lib.common.BaseHelper;
 import io.qio.qa.lib.connection.ConnectionResponse;
-import io.qio.qa.lib.ehm.apiHelpers.idm.MOauthAPIHelper;
+import io.qio.qa.lib.idm.apiHelpers.MOauthAPIHelper;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
