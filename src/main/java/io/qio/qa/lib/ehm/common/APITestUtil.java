@@ -88,6 +88,24 @@ public class APITestUtil {
 		}
 	}
 
+	public static <T> List<T> getListResponseObjForRetrieve(String microservice, String environment, String by, String elementId, APIRequestHelper apiRequestHelper, Object apiHelperObj, Class<T> classType) {
+		try {
+			initOauthAuthentication(environment, apiRequestHelper);
+
+			Class[] methodArgs = new Class[4];
+			methodArgs[0] = methodArgs[1] = methodArgs[2] = String.class;
+			methodArgs[3] = APIRequestHelper.class;
+			Method retrieveMethod = apiHelperObj.getClass().getMethod("retrieve", methodArgs);
+
+			ConnectionResponse conRespGet = (ConnectionResponse) retrieveMethod.invoke(apiHelperObj, microservice, environment, elementId, apiRequestHelper);
+			responseCodeForInputRequest = conRespGet.getRespCode();
+			return (List<T>) BaseHelper.toClassObjectList(conRespGet.getRespBody(), classType);
+		} catch (RuntimeException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	public static <T> T getResponseObjForRetrieve(String microservice, String environment, String elementId, String subElementId, APIRequestHelper apiRequestHelper, Object apiHelperObj,
 			Class<T> classType) {
 		try {
