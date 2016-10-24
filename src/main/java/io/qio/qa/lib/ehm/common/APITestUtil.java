@@ -91,16 +91,16 @@ public class APITestUtil {
 		}
 	}
 
-	public static <T> List<T> getListResponseObjForRetrieve(String microservice, String environment, String by, String elementId, APIRequestHelper apiRequestHelper, Object apiHelperObj, Class<T> classType) {
+	public static <T> List<T> getListResponseObjForRetrieveBySearch(String microservice, String environment, String searchBy, String searchValue, APIRequestHelper apiRequestHelper, Object apiHelperObj, Class<T> classType) {
 		try {
 			initOauthAuthentication(environment, apiRequestHelper);
 
-			Class[] methodArgs = new Class[4];
-			methodArgs[0] = methodArgs[1] = methodArgs[2] = String.class;
-			methodArgs[3] = APIRequestHelper.class;
+			Class[] methodArgs = new Class[5];
+			methodArgs[0] = methodArgs[1] = methodArgs[2] = methodArgs[3] = String.class;
+			methodArgs[4] = APIRequestHelper.class;
 			Method retrieveMethod = apiHelperObj.getClass().getMethod("retrieve", methodArgs);
 
-			ConnectionResponse conRespGet = (ConnectionResponse) retrieveMethod.invoke(apiHelperObj, microservice, environment, elementId, apiRequestHelper);
+			ConnectionResponse conRespGet = (ConnectionResponse) retrieveMethod.invoke(apiHelperObj, microservice, environment, searchBy, searchValue, apiRequestHelper);
 			responseCodeForInputRequest = conRespGet.getRespCode();
 			
 			//EFFIE
