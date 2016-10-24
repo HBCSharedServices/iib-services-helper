@@ -98,8 +98,11 @@ public class APITestUtil {
 			Class[] methodArgs = new Class[5];
 			methodArgs[0] = methodArgs[1] = methodArgs[2] = methodArgs[3] = String.class;
 			methodArgs[4] = APIRequestHelper.class;
-			logger.info("ECHO22 "+methodArgs.toString());
+			
+			//logger.info("ECHO22 "+methodArgs.toString());
 			Method retrieveMethod = apiHelperObj.getClass().getMethod("retrieve", methodArgs);
+			logger.info("HELP!!!!!!!!");
+			logger.info(retrieveMethod.toString());
 
 			ConnectionResponse conRespGet = (ConnectionResponse) retrieveMethod.invoke(apiHelperObj, microservice, environment, searchBy, searchValue, apiRequestHelper);
 			responseCodeForInputRequest = conRespGet.getRespCode();
