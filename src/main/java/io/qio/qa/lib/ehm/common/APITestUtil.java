@@ -9,6 +9,9 @@ import io.qio.qa.lib.common.BaseHelper;
 import io.qio.qa.lib.connection.ConnectionResponse;
 import io.qio.qa.lib.idm.apiHelpers.MOauthAPIHelper;
 import org.apache.log4j.Logger;
+//EFFIE
+import org.codehaus.jackson.JsonNode;
+import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -99,6 +102,16 @@ public class APITestUtil {
 
 			ConnectionResponse conRespGet = (ConnectionResponse) retrieveMethod.invoke(apiHelperObj, microservice, environment, elementId, apiRequestHelper);
 			responseCodeForInputRequest = conRespGet.getRespCode();
+			
+			//EFFIE
+//			String jsonString = conRespGet.getRespBody();
+//			 
+//		    ObjectMapper mapper = new ObjectMapper();
+//		    JsonNode actualObj = mapper.readTree(jsonString);
+//		    String groups = actualObj.get("groups").getTextValue();
+//		    return (List<T>) BaseHelper.toClassObjectList(groups, classType);
+		    //EFFIE END
+		    
 			return (List<T>) BaseHelper.toClassObjectList(conRespGet.getRespBody(), classType);
 		} catch (RuntimeException | IllegalAccessException | NoSuchMethodException | InvocationTargetException | IOException e) {
 			e.printStackTrace();
