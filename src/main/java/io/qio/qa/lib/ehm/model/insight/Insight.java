@@ -88,13 +88,13 @@ public abstract class Insight {
 		return createdDate;
 	}
 
-	public void setCreatedDate() {
-		this.createdDate = null;
-	}
-
-	public void setLastModifiedDate() {
-		this.lastModifiedDate = null;
-	}
+//	public void setCreatedDate() {
+//		this.createdDate = null;
+//	}
+//
+//	public void setLastModifiedDate() {
+//		this.lastModifiedDate = null;
+//	}
 
 	public String getReferenceId() {
 		return referenceId;
@@ -139,8 +139,8 @@ public abstract class Insight {
 			Field[] fields = Insight.class.getDeclaredFields();
 			for (Field field : fields) {
 				// Checking for the format of the Date Field.
-				if (field.getName().equals("createdDate")) {
-					if (!(isDateCorrectlyFormatted((String) field.get(this)) && isDateCorrectlyFormatted((String) field.get(responseObj))))
+				if (field.getName().equals("createdDate") || field.getName().equals("eventDate")) {
+					if (!(isDateCorrectlyFormatted((String) field.get(this), field.getName()) && isDateCorrectlyFormatted((String) field.get(responseObj), field.getName())))
 						return false;
 				}
 
@@ -162,14 +162,14 @@ public abstract class Insight {
 		return equalityCheckFlag;
 	}
 
-	public boolean isDateCorrectlyFormatted(String inputDate) {
+	public boolean isDateCorrectlyFormatted(String inputDate, String fieldName) {
 		Logger logger = Logger.getRootLogger();
 		Boolean dateFormatCheckerFlag = true;
-		String dateFormatCheckerRegex = "^\\d\\d\\d\\d-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01])T(00|0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])Z$";
+		String dateFormatCheckerRegex = "^\\d\\d\\d\\d-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01])T(00|0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]).([0-9][0-9].[0-9])Z$";
 
 		if (!inputDate.matches(dateFormatCheckerRegex)) {
 			dateFormatCheckerFlag = false;
-			logger.error("Incorrectly formatted Date: " + inputDate);
+			logger.error("Incorrectly formatted Date: " + fieldName + inputDate);
 		}
 		return dateFormatCheckerFlag;
 	}
