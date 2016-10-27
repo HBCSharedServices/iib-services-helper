@@ -43,6 +43,7 @@ public abstract class Insight {
 		this.description = description;
 		this.tenantId = tenantId;
 		this.insightTypeId = insightTypeId;
+		this.severity = InsightSeverity.INFORMATIONAL.toString();
 	}
 
 	public String getStatus() {
@@ -53,6 +54,13 @@ public abstract class Insight {
 		this.status = status;
 	}
 
+	public String getSeverity() {
+		return severity;
+	}
+
+	public void setSeverity(String severity) {
+		this.status = severity;
+	}
 	public String getTenantId() {
 		return tenantId;
 	}

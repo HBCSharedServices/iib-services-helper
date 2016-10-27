@@ -35,7 +35,6 @@ public class InsightRequestHelper {
 		tenantUtil = new TenantUtil();
 
 		InsightType insightType = insightTypeUtil.createInsightType(insightTypeFlavor, attributeDataType);
-		//String insightTypeId = APITestUtil.getElementId(insightType.get_links().getSelfLink().getHref());
 		String insightTypeId = insightType.getInsightTypeId();
 
 		Tenant tenant = tenantUtil.createTenant();

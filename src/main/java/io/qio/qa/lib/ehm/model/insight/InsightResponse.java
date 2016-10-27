@@ -13,9 +13,9 @@ public class InsightResponse extends Insight {
 		return insightType;
 	}
 
-//	public void setInsightType(InsightType insightType) {
-//		this.insightType = insightType;
-//	}
+	public void setInsightType(InsightType insightType) {
+		this.insightType = insightType;
+	}
 
 	// TODO:
 	/*
