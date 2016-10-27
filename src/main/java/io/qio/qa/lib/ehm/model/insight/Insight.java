@@ -76,7 +76,15 @@ public abstract class Insight {
 	public String getCreatedDate() {
 		return createdDate;
 	}
-	
+
+	public void setCreatedDate() {
+		this.createdDate = null;
+	}
+
+	public void setLastModifiedDate() {
+		this.lastModifiedDate = null;
+	}
+
 	public String getReferenceId() {
 		return referenceId;
 	}
