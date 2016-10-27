@@ -17,7 +17,7 @@ public class AssetResponse extends Asset {
 	public void setAssetType(AssetType assetType) {
 		this.assetType = assetType;
 	}
-
+	
 	// TODO:
 	/*
 	 * If two objects do not match, then its simply going to print out their

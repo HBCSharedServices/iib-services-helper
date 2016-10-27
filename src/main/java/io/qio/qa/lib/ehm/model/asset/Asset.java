@@ -5,6 +5,7 @@
 package io.qio.qa.lib.ehm.model.asset;
 
 import io.qio.qa.lib.ehm.model.common.Links;
+import io.qio.qa.lib.ehm.model.asset.AssetStatus;
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.annotate.JsonProperty;
 
@@ -16,8 +17,11 @@ public abstract class Asset {
 	protected String description;
 	protected String status;
 	protected String tenant;
-	protected String createdDate;
 
+	// returned in the response of a POST request
+	protected String createdDate;
+	protected String assetId;
+	
 	@JsonProperty("_links")
 	protected Links _links;
 
@@ -29,7 +33,7 @@ public abstract class Asset {
 		this.abbreviation = "A" + timeStamp;
 		this.name = "A" + timeStamp + "Name";
 		this.description = "A" + timeStamp + "Desc";
-		this.status = "AssetCreated";
+		this.status = AssetStatus.CREATED.toString();
 		this.tenant = tenant;
 	}
 
@@ -41,6 +45,14 @@ public abstract class Asset {
 		this.status = status;
 	}
 
+	public String getAssetId() {
+		return assetId;
+	}
+
+	public void setAssetId(String assetId) {
+		this.assetId = assetId;
+	}
+	
 	public String getAbbreviation() {
 		return abbreviation;
 	}
@@ -82,11 +94,11 @@ public abstract class Asset {
 	}
 
 	public String getDescription() {
-		return description;
+		return assetId;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescription(String assetId) {
+		this.assetId = assetId;
 	}
 
 	public Links get_links() {

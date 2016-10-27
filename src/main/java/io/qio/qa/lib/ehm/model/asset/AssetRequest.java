@@ -22,7 +22,7 @@ public class AssetRequest extends Asset {
 	}
 
 	public AssetRequest(AssetRequest assetRequest) {
-		this(assetRequest.getAbbreviation(), assetRequest.getName(), assetRequest.getDescription(), assetRequest.getAssetType(), assetRequest.getTenant(), assetRequest.getStatus());
+		this(assetRequest.getAbbreviation(), assetRequest.getName(), assetRequest.getDescription(), assetRequest.getTenant(), assetRequest.getAssetType(), assetRequest.getStatus());
 	}
 
 	public String getAssetType() {

@@ -5,7 +5,6 @@
 package io.qio.qa.lib.ehm.model.asset.helper;
 
 
-import io.qio.qa.lib.ehm.common.APITestUtil;
 import io.qio.qa.lib.ehm.common.AssetTypeUtil;
 import io.qio.qa.lib.ehm.common.TenantUtil;
 import io.qio.qa.lib.ehm.model.asset.AssetRequest;
@@ -37,7 +36,7 @@ public class AssetRequestHelper {
 		tenantUtil = new TenantUtil();
 
 		AssetType assetType = assetTypeUtil.createAssetType(assetTypeFlavor, attributeDataType, parameterDataType);
-		String assetTypeId = APITestUtil.getElementId(assetType.get_links().getSelfLink().getHref());
+		String assetTypeId = assetType.getAssetTypeId();
 
 		Tenant tenant = tenantUtil.createTenant();
 		String tenantId = tenant.getTenantId();
