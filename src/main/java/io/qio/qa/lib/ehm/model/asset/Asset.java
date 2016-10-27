@@ -48,10 +48,6 @@ public abstract class Asset {
 	public String getAssetId() {
 		return assetId;
 	}
-
-	public void setAssetId(String assetId) {
-		this.assetId = assetId;
-	}
 	
 	public String getAbbreviation() {
 		return abbreviation;
@@ -94,7 +90,7 @@ public abstract class Asset {
 	}
 
 	public String getDescription() {
-		return assetId;
+		return description;
 	}
 
 	public void setDescription(String assetId) {
