@@ -16,13 +16,13 @@ public class InsightRequest extends Insight {
 		this.insightTypeId = insightTypeId;
 	}
 
-	public InsightRequest(String title, String description, String insightTypeId, String tenantId, String status) {
+	public InsightRequest(String title, String description, String insightTypeId, String tenantId, String status, String severity) {
 		super(title, description, tenantId, status);
 		this.insightTypeId = insightTypeId;
 	}
 
 	public InsightRequest(InsightRequest insightRequest) {
-		this(insightRequest.getTitle(), insightRequest.getDescription(), insightRequest.getInsightTypeId(), insightRequest.getTenantId(), insightRequest.getStatus());
+		this(insightRequest.getTitle(), insightRequest.getDescription(), insightRequest.getInsightTypeId(), insightRequest.getTenantId(), insightRequest.getStatus(), insightRequest.getSeverity());
 	}
 
 	public String getInsightTypeId() {
