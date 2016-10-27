@@ -6,7 +6,7 @@
 
     <groupId>io.qio.qa.lib</groupId>
     <artifactId>ehm-test-helper</artifactId>
-    <version>1.0.8</version>
+    <version>1.0.9</version>
 
     <name>ehm-test-helper</name>
     <url>http://maven.apache.org</url>

@@ -5,6 +5,7 @@
 package io.qio.qa.lib.ehm.model.insight;
 
 import io.qio.qa.lib.ehm.model.common.Links;
+import io.qio.qa.lib.ehm.model.insight.InsightSeverity;
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.annotate.JsonProperty;
 import java.lang.reflect.Field;
@@ -13,6 +14,7 @@ public abstract class Insight {
 	protected String title;
 	protected String description;
 	protected String status;
+	protected String severity;
 	protected String tenantId;
 	protected String insightTypeId;
 	
@@ -33,6 +35,7 @@ public abstract class Insight {
 		this.description = "I" + timeStamp + "Desc";
 		this.tenantId = tenantId;
 		this.insightTypeId = insightTypeId;
+		this.severity = InsightSeverity.INFORMATIONAL.toString();
 	}
 
 	public Insight(String title, String description, String tenantId, String insightTypeId) {
