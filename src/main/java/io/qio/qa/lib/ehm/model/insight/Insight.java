@@ -80,7 +80,11 @@ public abstract class Insight {
 	public String getReferenceId() {
 		return referenceId;
 	}
-	
+
+	public String getInsightId() {
+		return insightId;
+	}
+
 	public String getTitle() {
 		return title;
 	}
