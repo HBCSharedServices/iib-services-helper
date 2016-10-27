@@ -25,7 +25,7 @@ public class InsightRequestHelper {
 
 	public InsightRequest getInsightWithPredefinedInsightTypeAndTenant(String insightTypeId, String tenantId) {
 		initDefaultInsight();
-		insight.setInsightType(insightTypeId);
+		insight.setInsightTypeId(insightTypeId);
 		insight.setTenantId(tenantId);
 		return insight;
 	}

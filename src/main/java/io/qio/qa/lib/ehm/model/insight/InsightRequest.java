@@ -22,18 +22,17 @@ public class InsightRequest extends Insight {
 	}
 
 	public InsightRequest(InsightRequest insightRequest) {
-		this(insightRequest.getTitle(), insightRequest.getDescription(), insightRequest.getInsightType(), insightRequest.getTenantId(), insightRequest.getStatus());
+		this(insightRequest.getTitle(), insightRequest.getDescription(), insightRequest.getInsightTypeId(), insightRequest.getTenantId(), insightRequest.getStatus());
 	}
 
-	public String getInsightType() {
+	public String getInsightTypeId() {
 		return insightTypeId;
 	}
 
-	public void setInsightType(String insightTypeId) {
+	public void setInsightTypeId(String insightTypeId) {
 		this.insightTypeId = insightTypeId;
 	}
-	
-	//Effie
+
 	public String getTenantId() {
 		return this.tenantId;
 	}
