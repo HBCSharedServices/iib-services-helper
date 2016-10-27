@@ -59,7 +59,7 @@ public abstract class Insight {
 	}
 
 	public void setSeverity(String severity) {
-		this.status = severity;
+		this.severity = severity;
 	}
 	public String getTenantId() {
 		return tenantId;
