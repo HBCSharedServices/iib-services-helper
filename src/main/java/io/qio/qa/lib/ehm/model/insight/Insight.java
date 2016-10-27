@@ -165,11 +165,8 @@ public abstract class Insight {
 	public boolean isDateCorrectlyFormatted(String inputDate, String fieldName) {
 		Logger logger = Logger.getRootLogger();
 		Boolean dateFormatCheckerFlag = true;
-		//String dateFormatCheckerRegex = "^\\d\\d\\d\\d-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01])T(00|0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]).([0-9][0-9].[0-9])Z$";
+		String dateFormatCheckerRegex = "^\\d\\d\\d\\d-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01])T(00|0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]).([0-9][0-9][0-9])Z$";
 
-		//String dateFormatCheckerRegex = "^(19|20)\\d\\d[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])T(00|0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]).([0-9][0-9].[0-9])Z$";
-		//String dateFormatCheckerRegex = "^(19|20)(16)-(0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])T(00|0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]).([0-9][0-9].[0-9])Z$";
-		String dateFormatCheckerRegex = "^(19|20)(16-10-27)T(00|0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]).([0-9][0-9].[0-9])Z$";
 		if (!inputDate.matches(dateFormatCheckerRegex)) {
 			dateFormatCheckerFlag = false;
 			logger.error("Incorrectly formatted Date: " + fieldName + inputDate);
