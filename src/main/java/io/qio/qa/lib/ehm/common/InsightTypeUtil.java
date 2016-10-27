@@ -15,8 +15,8 @@ public class InsightTypeUtil extends BaseTestUtil {
 	private MInsightTypeAPIHelper insightTypeAPI = new MInsightTypeAPIHelper();
 	private InsightTypeHelper insightTypeHelper;
 	private InsightType requestInsightType;
-	private final String MICROSERVICE_NAME = "insights";
-	private String userType = "test";
+	private final String MICROSERVICE_NAME = "insight";
+	private String userType = "superuser";
 
 	/**
 	 * 

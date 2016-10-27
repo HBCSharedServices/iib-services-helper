@@ -198,8 +198,8 @@ public class APITestUtil {
 	 * @return
 	 */
 	public static String getElementId(String hrefLink) {
-		String[] assetTypeHrefLinkSplitArray = hrefLink.split("/");
-		return assetTypeHrefLinkSplitArray[assetTypeHrefLinkSplitArray.length - 1];
+		String[] HrefLinkSplitArray = hrefLink.split("/");
+		return HrefLinkSplitArray[HrefLinkSplitArray.length - 1];
 	}
 
 	public static String getCurrentTimeStamp() {
