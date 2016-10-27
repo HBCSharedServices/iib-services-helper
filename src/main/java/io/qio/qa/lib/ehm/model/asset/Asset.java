@@ -94,7 +94,7 @@ public abstract class Asset {
 	}
 
 	public void setDescription(String assetId) {
-		this.assetId = assetId;
+		this.description = description;
 	}
 
 	public Links get_links() {
