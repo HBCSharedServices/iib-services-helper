@@ -88,14 +88,6 @@ public abstract class Insight {
 		return createdDate;
 	}
 
-//	public void setCreatedDate() {
-//		this.createdDate = null;
-//	}
-//
-//	public void setLastModifiedDate() {
-//		this.lastModifiedDate = null;
-//	}
-
 	public String getReferenceId() {
 		return referenceId;
 	}
@@ -139,20 +131,23 @@ public abstract class Insight {
 			Field[] fields = Insight.class.getDeclaredFields();
 			for (Field field : fields) {
 				// Checking for the format of the Date Field.
-				if (field.getName().equals("createdDate") || field.getName().equals("eventDate")) {
+				if (field.getName().equals("createdDate") || field.getName().equals("eventDate") || field.getName().equals("lastModifiedDate")) {
+					logger.info("Checking date format for "+field.getName().toString());
 					if (!(isDateCorrectlyFormatted((String) field.get(this), field.getName()) && isDateCorrectlyFormatted((String) field.get(responseObj), field.getName())))
 						return false;
 				}
 
-				Object requestVal = field.get(this);
-				Object responseVal = field.get(responseObj);
-				if (requestVal != null)
-					if (!requestVal.equals(responseVal)) {
-						equalityCheckFlag = false;
-						logger.error("Class Name: " + this.getClass().getName() + " --> Match failed on property: " + field.getName() + ", Request Value: " + requestVal + ", Response Value: "
-								+ responseVal);
-						break;
-					}
+				if (!(field.getName().equals("createdDate") && field.getName().equals("eventDate") && field.getName().equals("lastModifiedDate") && field.getName().equals("referenceId"))) {
+					Object requestVal = field.get(this);
+					Object responseVal = field.get(responseObj);
+					if (requestVal != null)
+						if (!requestVal.equals(responseVal)) {
+							equalityCheckFlag = false;
+							logger.error("Class Name: " + this.getClass().getName() + " --> Match failed on property: " + field.getName() + ", Request Value: " + requestVal + ", Response Value: "
+									+ responseVal);
+							break;
+						}
+				}
 			}
 		} catch (IllegalArgumentException e) {
 			logger.error(e.getMessage());
