@@ -4,7 +4,7 @@
  */
 package io.qio.qa.lib.ehm.model.insight.helper;
 
-import io.qio.qa.lib.ehm.common.APITestUtil;
+//import io.qio.qa.lib.ehm.common.APITestUtil;
 import io.qio.qa.lib.ehm.common.InsightTypeUtil;
 import io.qio.qa.lib.ehm.common.TenantUtil;
 import io.qio.qa.lib.ehm.model.insight.InsightRequest;
@@ -26,7 +26,7 @@ public class InsightRequestHelper {
 	public InsightRequest getInsightWithPredefinedInsightTypeAndTenant(String insightTypeId, String tenantId) {
 		initDefaultInsight();
 		insight.setInsightType(insightTypeId);
-		insight.setTenant(tenantId);
+		insight.setTenantId(tenantId);
 		return insight;
 	}
 
@@ -35,7 +35,8 @@ public class InsightRequestHelper {
 		tenantUtil = new TenantUtil();
 
 		InsightType insightType = insightTypeUtil.createInsightType(insightTypeFlavor, attributeDataType);
-		String insightTypeId = APITestUtil.getElementId(insightType.get_links().getSelfLink().getHref());
+		//String insightTypeId = APITestUtil.getElementId(insightType.get_links().getSelfLink().getHref());
+		String insightTypeId = insightType.getInsightTypeId();
 
 		Tenant tenant = tenantUtil.createTenant();
 		String tenantId = tenant.getTenantId();

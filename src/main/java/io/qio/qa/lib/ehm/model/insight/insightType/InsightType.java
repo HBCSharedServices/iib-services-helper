@@ -19,7 +19,7 @@ public class InsightType {
 	private String description;
 
 	// returned in the response of a POST request
-	@JsonProperty("insighttypeid")
+	@JsonProperty("insightTypeId")
 	private String insightTypeId;
 
 	@JsonProperty("attributes")
@@ -50,8 +50,8 @@ public class InsightType {
 		this.attributes = attributes;
 	}
 
-	public InsightType(InsightType assetType) {
-		this(assetType.getAbbreviation(), assetType.getName(), assetType.getDescription(), assetType.getAttributes());
+	public InsightType(InsightType insightType) {
+		this(insightType.getAbbreviation(), insightType.getName(), insightType.getDescription(), insightType.getAttributes());
 	}
 
 	public String getInsightTypeId() {

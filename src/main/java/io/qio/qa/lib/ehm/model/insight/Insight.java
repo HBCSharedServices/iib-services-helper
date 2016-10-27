@@ -13,12 +13,14 @@ public abstract class Insight {
 	protected String title;
 	protected String description;
 	protected String status;
-	protected String tenant;
-	protected String insightType;
+	protected String tenantId;
+	protected String insightTypeId;
+	
 	protected String createdDate;
 	protected String lastModifiedDate;
 	protected String referenceId;
-
+	protected String insightId;
+	
 	@JsonProperty("_links")
 	protected Links _links;
 
@@ -26,19 +28,18 @@ public abstract class Insight {
 	}
 
 	@SuppressWarnings("serial")
-	public Insight(String timeStamp, String tenant, String insightType) {
+	public Insight(String timeStamp, String tenantId, String insightTypeId) {
 		this.title = "I" + timeStamp + "Title";
 		this.description = "I" + timeStamp + "Desc";
-		this.tenant = tenant;
-		this.insightType = insightType;
+		this.tenantId = tenantId;
+		this.insightTypeId = insightTypeId;
 	}
 
-	public Insight(String title, String description, String tenant, String insightType) {
-		//this.abbreviation = abbreviation;
+	public Insight(String title, String description, String tenantId, String insightTypeId) {
 		this.title = title;
 		this.description = description;
-		this.tenant = tenant;
-		this.insightType = insightType;
+		this.tenantId = tenantId;
+		this.insightTypeId = insightTypeId;
 	}
 
 	public String getStatus() {
@@ -49,12 +50,12 @@ public abstract class Insight {
 		this.status = status;
 	}
 
-	public String getTenant() {
-		return tenant;
+	public String getTenantId() {
+		return tenantId;
 	}
 
-	public void setTenant(String tenant) {
-		this.tenant = tenant;
+	public void setTenantId(String tenantId) {
+		this.tenantId = tenantId;
 	}
 
 	public String getLastModifiedDate() {
@@ -139,3 +140,4 @@ public abstract class Insight {
 		return dateFormatCheckerFlag;
 	}
 }
+
