@@ -20,6 +20,7 @@ public abstract class Insight {
 	
 	protected String createdDate;
 	protected String lastModifiedDate;
+	protected String eventDate;
 	protected String referenceId;
 	protected String insightId;
 	
@@ -36,6 +37,7 @@ public abstract class Insight {
 		this.tenantId = tenantId;
 		this.insightTypeId = insightTypeId;
 		this.severity = InsightSeverity.INFORMATIONAL.toString();
+		this.eventDate = null;
 	}
 
 	public Insight(String title, String description, String tenantId, String insightTypeId) {
@@ -44,6 +46,7 @@ public abstract class Insight {
 		this.tenantId = tenantId;
 		this.insightTypeId = insightTypeId;
 		this.severity = InsightSeverity.INFORMATIONAL.toString();
+		this.eventDate = null;
 	}
 
 	public String getStatus() {
@@ -67,6 +70,14 @@ public abstract class Insight {
 
 	public void setTenantId(String tenantId) {
 		this.tenantId = tenantId;
+	}
+
+	public String getEventDate() {
+		return eventDate;
+	}
+
+	public void setEventDate(String eventDate) {
+		this.eventDate = eventDate;
 	}
 
 	public String getLastModifiedDate() {
