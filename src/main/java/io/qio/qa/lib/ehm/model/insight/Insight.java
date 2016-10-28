@@ -164,8 +164,9 @@ public abstract class Insight {
 	public boolean isDateCorrectlyFormatted(String inputDate, String fieldName) {
 		Logger logger = Logger.getRootLogger();
 		Boolean dateFormatCheckerFlag = true;
+		logger.info("aaaaa");
 		String dateFormatCheckerRegex = "^\\d\\d\\d\\d-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01])T(00|0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]).([0-9][0-9][0-9])Z$";
-
+		logger.info("bbb");
 		if (!inputDate.matches(dateFormatCheckerRegex)) {
 			dateFormatCheckerFlag = false;
 			logger.error("Incorrectly formatted Date: " + fieldName + inputDate);
