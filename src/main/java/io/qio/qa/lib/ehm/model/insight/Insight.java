@@ -140,6 +140,7 @@ public abstract class Insight {
 				if (!(field.getName().equals("createdDate") && field.getName().equals("eventDate") && field.getName().equals("lastModifiedDate") && field.getName().equals("referenceId") && field.getName().equals("insightId") && field.getName().equals("insightTypeId"))) {
 					Object requestVal = field.get(this);
 					Object responseVal = field.get(responseObj);
+					logger.info("Checking value of field "+field.getName().toString());
 					if (requestVal != null)
 						if (!requestVal.equals(responseVal)) {
 							equalityCheckFlag = false;
