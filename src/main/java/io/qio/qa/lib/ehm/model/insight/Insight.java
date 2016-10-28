@@ -137,7 +137,7 @@ public abstract class Insight {
 						return false;
 				}
 
-				if (!(field.getName().equals("createdDate") && field.getName().equals("eventDate") && field.getName().equals("lastModifiedDate") && field.getName().equals("referenceId") && field.getName().equals("insightId"))) {
+				if (!(field.getName().equals("createdDate") && field.getName().equals("eventDate") && field.getName().equals("lastModifiedDate") && field.getName().equals("referenceId") && field.getName().equals("insightId") && field.getName().equals("insightTypeId"))) {
 					Object requestVal = field.get(this);
 					Object responseVal = field.get(responseObj);
 					if (requestVal != null)
