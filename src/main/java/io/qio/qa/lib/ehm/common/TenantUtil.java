@@ -8,6 +8,7 @@ package io.qio.qa.lib.ehm.common;
 import io.qio.qa.lib.ehm.apiHelpers.MTenantAPIHelper;
 import io.qio.qa.lib.ehm.model.tenant.Tenant;
 import io.qio.qa.lib.ehm.model.tenant.helper.TenantHelper;
+import io.qio.qa.lib.common.MAbstractAPIHelper;
 
 public class TenantUtil extends BaseTestUtil {
 
@@ -24,6 +25,6 @@ public class TenantUtil extends BaseTestUtil {
 		tenantHelper = new TenantHelper();
 		requestTenant = tenantHelper.getTenant();
 
-		return APITestUtil.getResponseObjForCreate(requestTenant, tenantMicroservice, environment, apiRequestHelper, tenantAPI, Tenant.class);
+		return MAbstractAPIHelper.getResponseObjForCreate(requestTenant, tenantMicroservice, environment, apiRequestHelper, tenantAPI, Tenant.class);
 	}
 }

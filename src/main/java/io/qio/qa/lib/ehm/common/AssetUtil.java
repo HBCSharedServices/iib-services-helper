@@ -11,6 +11,7 @@ import io.qio.qa.lib.ehm.model.asset.AssetResponse;
 import io.qio.qa.lib.ehm.model.asset.helper.AssetRequestHelper;
 import io.qio.qa.lib.ehm.model.assetType.helper.AttributeDataType;
 import io.qio.qa.lib.ehm.model.assetType.helper.ParameterDataType;
+import io.qio.qa.lib.common.MAbstractAPIHelper;
 
 public class AssetUtil extends BaseTestUtil {
 
@@ -26,6 +27,6 @@ public class AssetUtil extends BaseTestUtil {
 		assetRequestHelper = new AssetRequestHelper();
 		requestAsset = assetRequestHelper.getAssetWithCreatingAssetTypeAndTenant(assetTypeFlavor, attributeDataType, parameterDataType);
 
-		return APITestUtil.getResponseObjForCreate(requestAsset, assetMicroservice, environment, apiRequestHelper, assetAPI, AssetResponse.class);
+		return MAbstractAPIHelper.getResponseObjForCreate(requestAsset, assetMicroservice, environment, apiRequestHelper, assetAPI, AssetResponse.class);
 	}
 }

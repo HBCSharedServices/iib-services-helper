@@ -8,6 +8,7 @@ import io.qio.qa.lib.ehm.apiHelpers.insights.MInsightTypeAPIHelper;
 import io.qio.qa.lib.ehm.model.insight.insightType.InsightType;
 import io.qio.qa.lib.ehm.model.insight.insightType.helper.InsightTypeHelper;
 import io.qio.qa.lib.ehm.model.insight.insightType.helper.AttributeDataType;
+import io.qio.qa.lib.common.MAbstractAPIHelper;
 
 
 public class InsightTypeUtil extends BaseTestUtil {
@@ -42,6 +43,6 @@ public class InsightTypeUtil extends BaseTestUtil {
 		default:
 			requestInsightType = insightTypeHelper.getInsightTypeWithNoAttributes();
 		}
-		return APITestUtil.getResponseObjForCreate(requestInsightType, insightTypeMicroservice, environment, apiRequestHelper, insightTypeAPI, InsightType.class);
+		return MAbstractAPIHelper.getResponseObjForCreate(requestInsightType, insightTypeMicroservice, environment, apiRequestHelper, insightTypeAPI, InsightType.class);
 	}
 }

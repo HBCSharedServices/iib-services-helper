@@ -9,6 +9,7 @@ import io.qio.qa.lib.ehm.model.assetType.AssetType;
 import io.qio.qa.lib.ehm.model.assetType.helper.AssetTypeHelper;
 import io.qio.qa.lib.ehm.model.assetType.helper.AttributeDataType;
 import io.qio.qa.lib.ehm.model.assetType.helper.ParameterDataType;
+import io.qio.qa.lib.common.MAbstractAPIHelper;
 
 public class AssetTypeUtil extends BaseTestUtil {
 
@@ -50,6 +51,6 @@ public class AssetTypeUtil extends BaseTestUtil {
 		default:
 			requestAssetType = assetTypeHelper.getAssetTypeWithNoAttributesAndParameters();
 		}
-		return APITestUtil.getResponseObjForCreate(requestAssetType, assetTypeMicroservice, environment, apiRequestHelper, assetTypeAPI, AssetType.class);
+		return MAbstractAPIHelper.getResponseObjForCreate(requestAssetType, assetTypeMicroservice, environment, apiRequestHelper, assetTypeAPI, AssetType.class);
 	}
 }
