@@ -14,6 +14,7 @@ import io.qio.qa.lib.ehm.model.userGroup.UserGroup;
 import io.qio.qa.lib.idm.apiHelpers.MUserGroupAPIHelper;
 
 import java.util.List;
+import org.apache.log4j.Logger;
 
 public class TenantUtil extends BaseTestUtil {
 
@@ -23,6 +24,7 @@ public class TenantUtil extends BaseTestUtil {
 	private Tenant requestTenant;
 	private MUserGroupAPIHelper groupAPI;
 	private String userType = "admin";
+	final static Logger logger = Logger.getRootLogger();
 
 	public Tenant createTenant() {
 		initSetup(userType);
@@ -34,8 +36,14 @@ public class TenantUtil extends BaseTestUtil {
 		return MAbstractAPIHelper.getResponseObjForCreate(requestTenant, tenantMicroservice, environment, apiRequestHelper, tenantAPI, Tenant.class);
 	}
 
-	public String getIDMGroupForTenant (String tenantId, String oauthMicroservice) {
+	public String getIDMGroupForTenant (String tenantId) {
+		initSetup(userType);
 		groupAPI = new MUserGroupAPIHelper();
+		String oauthMicroservice = microserviceConfig.getString(oauthMicroserviceName + "." + envRuntime);
+
+		logger.info(groupAPI.getClass().toString());
+		logger.info(apiRequestHelper.getClass().toString());
+
 		UserGroup committedGroup = MAbstractAPIHelper.getListResponseObjForRetrieveBySearch(oauthMicroservice, environment, "byNameLike", tenantId, apiRequestHelper, groupAPI, UserGroup.class).get(0);
 		return(BaseHelper.getElementId(committedGroup.get_links().getSelfLink().getHref()));
 	}
