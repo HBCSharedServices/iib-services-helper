@@ -21,6 +21,7 @@ public class TenantUtil extends BaseTestUtil {
 	private String MICROSERVICE_NAME = "tenant";
 	private TenantHelper tenantHelper;
 	private Tenant requestTenant;
+	private MUserGroupAPIHelper groupAPI;
 	private String userType = "admin";
 
 	public Tenant createTenant() {
@@ -33,7 +34,8 @@ public class TenantUtil extends BaseTestUtil {
 		return MAbstractAPIHelper.getResponseObjForCreate(requestTenant, tenantMicroservice, environment, apiRequestHelper, tenantAPI, Tenant.class);
 	}
 
-	public String getIDMGroupForTenant (String tenantId, String oauthMicroservice, MUserGroupAPIHelper groupAPI) {
+	public String getIDMGroupForTenant (String tenantId, String oauthMicroservice) {
+		groupAPI = new MUserGroupAPIHelper();
 		UserGroup committedGroup = MAbstractAPIHelper.getListResponseObjForRetrieveBySearch(oauthMicroservice, environment, "byNameLike", tenantId, apiRequestHelper, groupAPI, UserGroup.class).get(0);
 		return(BaseHelper.getElementId(committedGroup.get_links().getSelfLink().getHref()));
 	}
