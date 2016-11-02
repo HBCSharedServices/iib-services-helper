@@ -73,10 +73,6 @@ public abstract class Asset {
 		this.tenant = tenant;
 	}
 
-	public String getCreatedDate() {
-		return createdDate;
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -101,6 +97,10 @@ public abstract class Asset {
 		this._links = _links;
 	}
 
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
     public Boolean validateDateFormats() {
         Logger logger = Logger.getRootLogger();
         Field[] fields = Asset.class.getDeclaredFields();
@@ -112,7 +112,7 @@ public abstract class Asset {
 
                 // Checking for the format of the Date Field.
                 if (field.getName().equals("createdDate")) {
-                    logger.info("Checking validity of date format for "+fieldName);
+                    //logger.info("Checking validity of date format for "+fieldName);
                     if (!(BaseHelper.isDateCorrectlyFormattedForISO8601NoMS((String) responseVal, fieldName)))
                         return false;
                 }
@@ -137,6 +137,7 @@ public abstract class Asset {
 				Object responseVal = field.get(responseObj);
 				String fieldName = field.getName();
 
+//                // This is separated out as a different method so not all tests will fail if the date format is not right
 //                // Checking for the format of the Date Field.
 //                if (field.getName().equals("createdDate")) {
 //                    //logger.info("Checking validity of date format for "+fieldName);
@@ -153,7 +154,7 @@ public abstract class Asset {
 					//logger.info("Skip the value checking of field " + fieldName);
 				} else {
 					if (requestVal != null) {
-                        logger.info("Checking value of field " + fieldName);
+                        //logger.info("Checking value of field " + fieldName);
                         if (!requestVal.equals(responseVal)) {
                             equalityCheckFlag = false;
                             logger.error("Class Name: " + this.getClass().getName() + " --> Match failed on property: " + fieldName + ", Request Value: " + requestVal + ", Response Value: "
