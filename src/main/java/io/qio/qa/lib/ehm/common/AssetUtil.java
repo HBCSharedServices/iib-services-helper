@@ -4,7 +4,6 @@
  */
 package io.qio.qa.lib.ehm.common;
 
-
 import io.qio.qa.lib.ehm.apiHelpers.MAssetAPIHelper;
 import io.qio.qa.lib.ehm.model.asset.AssetRequest;
 import io.qio.qa.lib.ehm.model.asset.AssetResponse;
