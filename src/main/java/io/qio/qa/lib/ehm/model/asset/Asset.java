@@ -78,9 +78,10 @@ public abstract class Asset {
 		return createdDate;
 	}
 
-//	public void setCreatedDate(String createdDate) {
-//		this.createdDate = createdDate;
-//	}
+	//Keep this not to run into null pointer exception in the equals method
+	public void setCreatedDate(String createdDate) {
+		this.createdDate = createdDate;
+	}
 
 	public String getName() {
 		return name;
