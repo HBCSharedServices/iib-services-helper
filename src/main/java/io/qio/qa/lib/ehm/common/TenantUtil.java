@@ -17,7 +17,6 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 public class TenantUtil extends BaseTestUtil {
-
 	private MTenantAPIHelper tenantAPI = new MTenantAPIHelper();
 	private String MICROSERVICE_NAME = "tenant";
 	private TenantHelper tenantHelper;
@@ -41,8 +40,8 @@ public class TenantUtil extends BaseTestUtil {
 		groupAPI = new MUserGroupAPIHelper();
 		String oauthMicroservice = microserviceConfig.getString(oauthMicroserviceName + "." + envRuntime);
 
-		logger.info(groupAPI.getClass().toString());
-		logger.info(apiRequestHelper.getClass().toString());
+//		logger.info(groupAPI.getClass().toString());
+//		logger.info(apiRequestHelper.getClass().toString());
 
 		UserGroup committedGroup = MAbstractAPIHelper.getListResponseObjForRetrieveBySearch(oauthMicroservice, environment, "byNameLike", tenantId, apiRequestHelper, groupAPI, UserGroup.class).get(0);
 		return(BaseHelper.getElementId(committedGroup.get_links().getSelfLink().getHref()));

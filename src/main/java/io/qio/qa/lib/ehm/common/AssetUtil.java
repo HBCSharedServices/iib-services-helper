@@ -18,7 +18,7 @@ public class AssetUtil extends BaseTestUtil {
 	private AssetRequestHelper assetRequestHelper;
 	private static AssetRequest requestAsset;
 	private final String MICROSERVICE_NAME = "asset";
-	private String userType = "test";
+	private String userType = "user";
 
 	public AssetResponse createAssetWithCreatingAssetTypeAndTenant(String assetTypeFlavor, AttributeDataType attributeDataType, ParameterDataType parameterDataType) {
 		initSetup(userType);
