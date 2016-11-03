@@ -17,7 +17,7 @@ public class AssetTypeUtil extends BaseTestUtil {
 	private AssetTypeHelper assetTypeHelper;
 	private AssetType requestAssetType;
 	private final String MICROSERVICE_NAME = "asset";
-	private String userType = "test";
+	private String userType = "user";
 
 	/**
 	 * 
