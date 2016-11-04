@@ -2,16 +2,16 @@
  * © Qio Technologies Ltd. 2016. All rights reserved.
  * CONFIDENTIAL AND PROPRIETARY INFORMATION OF QIO TECHNOLOGIES LTD.
  */
-package io.qio.qa.lib.ehm.model.insight.insightType;
+package io.qio.qa.lib.ehm.model.insightType;
 
 import io.qio.qa.lib.ehm.model.common.Links;
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.ArrayList;
 
 public class InsightType {
 	private String abbreviation;
@@ -36,6 +36,7 @@ public class InsightType {
 		this.abbreviation = "IT" + timeStamp;
 		this.name = "IT" + timeStamp + "Name";
 		this.description = "IT" + timeStamp + "Desc";
+        //EFFIEE PUT BACK
 		this.attributes = new ArrayList<InsightTypeAttribute>() {
 			{
 				add(new InsightTypeAttribute());

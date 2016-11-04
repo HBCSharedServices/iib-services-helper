@@ -2,10 +2,10 @@
  * © Qio Technologies Ltd. 2016. All rights reserved.
  * CONFIDENTIAL AND PROPRIETARY INFORMATION OF QIO TECHNOLOGIES LTD.
  */
-package io.qio.qa.lib.ehm.model.insight.insightType.helper;
+package io.qio.qa.lib.ehm.model.insightType.helper;
 
-import io.qio.qa.lib.ehm.model.insight.insightType.InsightType;
-import io.qio.qa.lib.ehm.model.insight.insightType.InsightTypeAttribute;
+import io.qio.qa.lib.ehm.model.insightType.InsightType;
+import io.qio.qa.lib.ehm.model.insightType.InsightTypeAttribute;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -2,7 +2,7 @@
  * © Qio Technologies Ltd. 2016. All rights reserved.
  * CONFIDENTIAL AND PROPRIETARY INFORMATION OF QIO TECHNOLOGIES LTD.
  */
-package io.qio.qa.lib.ehm.model.insight.insightType;
+package io.qio.qa.lib.ehm.model.insightType;
 
 import io.qio.qa.lib.ehm.model.common.Links;
 import org.apache.log4j.Logger;
