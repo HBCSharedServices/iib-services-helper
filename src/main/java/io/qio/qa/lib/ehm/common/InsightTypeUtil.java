@@ -5,9 +5,9 @@
 package io.qio.qa.lib.ehm.common;
 
 import io.qio.qa.lib.ehm.apiHelpers.insights.MInsightTypeAPIHelper;
-import io.qio.qa.lib.ehm.model.insightTypeX.InsightType;
-import io.qio.qa.lib.ehm.model.insightTypeX.helper.InsightTypeHelper;
-import io.qio.qa.lib.ehm.model.insightTypeX.helper.AttributeDataType;
+import io.qio.qa.lib.ehm.model.insightType.InsightType;
+import io.qio.qa.lib.ehm.model.insightType.helper.InsightTypeHelper;
+import io.qio.qa.lib.ehm.model.insightType.helper.AttributeDataType;
 import io.qio.qa.lib.common.MAbstractAPIHelper;
 
 
