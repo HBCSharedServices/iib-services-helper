@@ -133,7 +133,7 @@ public abstract class Insight {
 
 				// Checking for the format of the Date Field.
 				if (fieldName.equals("createdDate") || fieldName.equals("eventDate") || fieldName.equals("lastModifiedDate")) {
-					logger.info("Checking validity of date format for "+fieldName);
+					//logger.info("Checking validity of date format for "+fieldName);
 					if (!(BaseHelper.isDateCorrectlyFormattedForISO8601NoMS((String) responseVal, fieldName)))
 						return false;
 				}
