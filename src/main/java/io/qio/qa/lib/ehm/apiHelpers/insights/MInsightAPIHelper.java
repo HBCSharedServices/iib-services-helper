@@ -12,7 +12,7 @@ import org.apache.log4j.Logger;
 
 public class MInsightAPIHelper extends MBaseAPIHelper {
 	private final String createOrUpdateInsightEndpoint = "/insights";
-	private final String getOrDeleteSingleInsightEndpointAbstract = "/insights/{insightId}";
+	private final String getOrDeleteSingleInsightEndpoint = "/insights/{insightId}";
 	private final String getAllInsightsEndpoint = "/insights";
 	final static Logger logger = Logger.getRootLogger();
 	
@@ -21,7 +21,6 @@ public class MInsightAPIHelper extends MBaseAPIHelper {
 	}
 	
 	public void delete(String microservice, String environment, String insightId, APIRequestHelper apiRequestHeaders) {
-		logger.info(replaceInsightIdInSingleInsightEndpoint(insightId));
 		super.delete(microservice, environment, replaceInsightIdInSingleInsightEndpoint(insightId), apiRequestHeaders);
 	}
 
@@ -39,6 +38,6 @@ public class MInsightAPIHelper extends MBaseAPIHelper {
 	}
 	
 	private String replaceInsightIdInSingleInsightEndpoint(String insightId) {
-		return  getOrDeleteSingleInsightEndpointAbstract.replace("{insightId}", insightId);
+		return getOrDeleteSingleInsightEndpoint.replace("{insightId}", insightId);
 	}
 }

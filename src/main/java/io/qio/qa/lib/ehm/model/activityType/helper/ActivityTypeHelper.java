@@ -2,10 +2,10 @@
  * © Qio Technologies Ltd. 2016. All rights reserved.
  * CONFIDENTIAL AND PROPRIETARY INFORMATION OF QIO TECHNOLOGIES LTD.
  */
-package io.qio.qa.lib.ehm.model.insight.activityType.helper;
+package io.qio.qa.lib.ehm.model.activityType.helper;
 
 
-import io.qio.qa.lib.ehm.model.insight.activityType.ActivityType;
+import io.qio.qa.lib.ehm.model.activityType.ActivityType;
 
 public class ActivityTypeHelper {
 	ActivityType activityType = null;

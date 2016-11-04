@@ -4,7 +4,7 @@
  */
 package io.qio.qa.lib.ehm.model.insight;
 
-import io.qio.qa.lib.ehm.model.insight.insightType.InsightType;
+import io.qio.qa.lib.ehm.model.insightType.InsightType;
 
 public class InsightResponse extends Insight {
 	private InsightType insightType;

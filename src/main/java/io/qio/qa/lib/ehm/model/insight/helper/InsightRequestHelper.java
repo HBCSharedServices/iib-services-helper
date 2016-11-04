@@ -8,8 +8,8 @@ package io.qio.qa.lib.ehm.model.insight.helper;
 import io.qio.qa.lib.ehm.common.InsightTypeUtil;
 import io.qio.qa.lib.ehm.common.TenantUtil;
 import io.qio.qa.lib.ehm.model.insight.InsightRequest;
-import io.qio.qa.lib.ehm.model.insight.insightType.InsightType;
-import io.qio.qa.lib.ehm.model.insight.insightType.helper.AttributeDataType;
+import io.qio.qa.lib.ehm.model.insightTypeX.InsightType;
+import io.qio.qa.lib.ehm.model.insightTypeX.helper.AttributeDataType;
 import io.qio.qa.lib.ehm.model.tenant.Tenant;
 
 public class InsightRequestHelper {

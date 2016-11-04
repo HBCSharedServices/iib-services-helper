@@ -39,7 +39,6 @@ public class MTenantAPIHelper extends MBaseAPIHelper {
 	}
 	
 	private String replaceTenantIdInSingleTenantEndpoint(String tenantId) {
-		String singleTenantEndpoint = getOrDeleteSingleTenantEndpointAbstract.replace("{tenantId}", tenantId);
-		return singleTenantEndpoint;
+		return getOrDeleteSingleTenantEndpointAbstract.replace("{tenantId}", tenantId);
 	}
 }
