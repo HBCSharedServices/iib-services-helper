@@ -4,7 +4,7 @@
  */
 
 
-package io.qio.qa.lib.ehm.apiHelpers;
+package io.qio.qa.lib.ehm.apiHelpers.asset;
 
 
 import io.qio.qa.lib.apiHelpers.APIRequestHelper;
@@ -38,7 +38,6 @@ public class MAssetAPIHelper extends MBaseAPIHelper {
 	}
 	
 	private String replaceAssetIdInSingleAssetEndpoint(String assetId) {
-		String singleAssetEndpoint = getOrDeleteSingleAssetEndpointAbstract.replace("{assetId}", assetId);
-		return singleAssetEndpoint;
+		return getOrDeleteSingleAssetEndpointAbstract.replace("{assetId}", assetId);
 	}
 }

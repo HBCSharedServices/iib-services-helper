@@ -2,7 +2,7 @@
  * © Qio Technologies Ltd. 2016. All rights reserved.
  * CONFIDENTIAL AND PROPRIETARY INFORMATION OF QIO TECHNOLOGIES LTD.
  */
-package io.qio.qa.lib.ehm.apiHelpers;
+package io.qio.qa.lib.ehm.apiHelpers.tenant;
 
 import io.qio.qa.lib.apiHelpers.APIRequestHelper;
 import io.qio.qa.lib.common.MBaseAPIHelper;

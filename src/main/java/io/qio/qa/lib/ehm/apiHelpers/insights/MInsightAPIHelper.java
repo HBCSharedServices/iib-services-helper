@@ -8,17 +8,20 @@ package io.qio.qa.lib.ehm.apiHelpers.insights;
 import io.qio.qa.lib.apiHelpers.APIRequestHelper;
 import io.qio.qa.lib.common.MBaseAPIHelper;
 import io.qio.qa.lib.connection.ConnectionResponse;
+import org.apache.log4j.Logger;
 
 public class MInsightAPIHelper extends MBaseAPIHelper {
 	private final String createOrUpdateInsightEndpoint = "/insights";
 	private final String getOrDeleteSingleInsightEndpointAbstract = "/insights/{insightId}";
 	private final String getAllInsightsEndpoint = "/insights";
+	final static Logger logger = Logger.getRootLogger();
 	
 	public ConnectionResponse create(String microservice, String environment, String payload, APIRequestHelper apiRequestHeaders){
 		return super.create(microservice, environment, createOrUpdateInsightEndpoint, payload, apiRequestHeaders);
 	}
 	
 	public void delete(String microservice, String environment, String insightId, APIRequestHelper apiRequestHeaders) {
+		logger.info(replaceInsightIdInSingleInsightEndpoint(insightId));
 		super.delete(microservice, environment, replaceInsightIdInSingleInsightEndpoint(insightId), apiRequestHeaders);
 	}
 
@@ -36,7 +39,6 @@ public class MInsightAPIHelper extends MBaseAPIHelper {
 	}
 	
 	private String replaceInsightIdInSingleInsightEndpoint(String insightId) {
-		String singleInsightEndpoint = getOrDeleteSingleInsightEndpointAbstract.replace("{insightId}", insightId);
-		return singleInsightEndpoint;
+		return  getOrDeleteSingleInsightEndpointAbstract.replace("{insightId}", insightId);
 	}
 }

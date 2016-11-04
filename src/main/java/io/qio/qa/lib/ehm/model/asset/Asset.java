@@ -44,10 +44,6 @@ public abstract class Asset {
 		this.tenant = tenant;
 		this.status = status;
 	}
-
-	public String getAssetId() {
-		return assetId;
-	}
 	
 	public String getAbbreviation() {
 		return abbreviation;
@@ -99,6 +95,10 @@ public abstract class Asset {
 
     public String getCreatedDate() {
         return createdDate;
+    }
+
+    public String getAssetId() {
+        return assetId;
     }
 
     public Boolean validateDateFormats() {

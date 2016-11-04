@@ -45,9 +45,9 @@ public class AssetTypeUtil extends BaseTestUtil {
 		case "WithAllParameters":
 			requestAssetType = assetTypeHelper.getAssetTypeWithAllParameters();
 			break;
-			case "WithAllAttributes":
-				requestAssetType = assetTypeHelper.getAssetTypeWithAllAttributes();
-				break;
+        case "WithAllAttributes":
+            requestAssetType = assetTypeHelper.getAssetTypeWithAllAttributes();
+            break;
 		case "WithAllAttributesAndParameters":
 			requestAssetType = assetTypeHelper.getAssetTypeWithAllAttributesAndParameters();
 			break;

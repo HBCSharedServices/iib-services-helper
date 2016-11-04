@@ -39,7 +39,6 @@ public class MInsightTypeAPIHelper extends MBaseAPIHelper {
 	}
 
 	protected String replaceInsightTypeIdInSingleInsightTypeEndpoint(String insightTypeId) {
-		String singleInsightTypeEndpoint = getOrDeleteSingleInsightTypeEndpointAbstract.replace("{insightTypeId}", insightTypeId);
-		return singleInsightTypeEndpoint;
+		return getOrDeleteSingleInsightTypeEndpointAbstract.replace("{insightTypeId}", insightTypeId);
 	}
 }

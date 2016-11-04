@@ -6,14 +6,13 @@ package io.qio.qa.lib.ehm.common;
 
 
 import io.qio.qa.lib.common.BaseHelper;
-import io.qio.qa.lib.ehm.apiHelpers.MTenantAPIHelper;
+import io.qio.qa.lib.ehm.apiHelpers.tenant.MTenantAPIHelper;
 import io.qio.qa.lib.ehm.model.tenant.Tenant;
 import io.qio.qa.lib.ehm.model.tenant.helper.TenantHelper;
 import io.qio.qa.lib.common.MAbstractAPIHelper;
 import io.qio.qa.lib.ehm.model.userGroup.UserGroup;
 import io.qio.qa.lib.idm.apiHelpers.MUserGroupAPIHelper;
 
-import java.util.List;
 import org.apache.log4j.Logger;
 
 public class TenantUtil extends BaseTestUtil {
