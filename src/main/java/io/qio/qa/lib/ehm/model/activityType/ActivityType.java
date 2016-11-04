@@ -20,8 +20,8 @@ public class ActivityType {
 	final static Logger logger = Logger.getRootLogger();
 
 	// returned in the response of a POST request
-	@JsonProperty("activityTypeId")
 	private String activityTypeId;
+	private String systemDefined;
 
 	@JsonProperty("_links")
 	private Links _links;
@@ -48,10 +48,6 @@ public class ActivityType {
 
 	public String getActivityTypeId() {
 		return activityTypeId;
-	}
-
-	public void setActivityTypeId(String activityTypeId) {
-		this.activityTypeId = activityTypeId;
 	}
 
 	public String getAbbreviation() {
@@ -86,6 +82,10 @@ public class ActivityType {
 		this._links = _links;
 	}
 
+	public String getSystemDefined() {
+		return systemDefined;
+	}
+
 	// TODO:
 	/*
 	 * If two objects do not match, then its simply going to print out their string representations in the logger message. I need to figure out a
@@ -95,6 +95,7 @@ public class ActivityType {
 	public boolean equals(Object responseObj) {
 		Logger logger = Logger.getRootLogger();
 		Boolean equalityCheckFlag = true;
+
 		try {
 			if (!(responseObj instanceof ActivityType) || responseObj == null)
 				return false;
@@ -103,18 +104,25 @@ public class ActivityType {
 			for (Field field : fields) {
 				Object requestVal = field.get(this);
 				Object responseVal = field.get(responseObj);
+				String fieldName = field.getName();
 				if (requestVal instanceof List) {
 					Collections.sort((List) requestVal);
 					Collections.sort((List) responseVal);
 				}
 
-				if (requestVal != null)
-					if (!requestVal.equals(responseVal)) {
-						equalityCheckFlag = false;
-						logger.error("Class Name: " + this.getClass().getName() + " --> Match failed on property: " + field.getName()
-								+ ", Request Value: " + requestVal + ", Response Value: " + responseVal);
-						break;
+				if (fieldName.equals("systemDefined")) {
+					//logger.info("Skip the value checking for field " + fieldName);
+				} else {
+					logger.info("Checking value of field " + fieldName);
+					if (requestVal != null) {
+						if (!requestVal.equals(responseVal)) {
+							equalityCheckFlag = false;
+							logger.error("Class Name: " + this.getClass().getName() + " --> Match failed on property: " + fieldName + ", Request Value: " + requestVal + ", Response Value: "
+									+ responseVal);
+							break;
+						}
 					}
+				}
 			}
 		} catch (IllegalArgumentException e) {
 			logger.error(e.getMessage());

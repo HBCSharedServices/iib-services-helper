@@ -6,7 +6,6 @@ package io.qio.qa.lib.ehm.model.insight;
 
 import io.qio.qa.lib.ehm.model.common.Links;
 import io.qio.qa.lib.common.BaseHelper;
-import io.qio.qa.lib.ehm.model.insight.InsightSeverity;
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.annotate.JsonProperty;
 import java.lang.reflect.Field;
@@ -175,7 +174,7 @@ public abstract class Insight {
 				if (fieldName.contains("Date") || fieldName.contains("Id")) {
 					//logger.info("Skip the value checking for field " + fieldName);
 				} else {
-					logger.info("Checking value of field " + fieldName);
+					//logger.info("Checking value of field " + fieldName);
 					if (requestVal != null) {
 						if (!requestVal.equals(responseVal)) {
 							equalityCheckFlag = false;

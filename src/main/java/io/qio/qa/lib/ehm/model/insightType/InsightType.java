@@ -19,7 +19,6 @@ public class InsightType {
 	private String description;
 
 	// returned in the response of a POST request
-	@JsonProperty("insightTypeId")
 	private String insightTypeId;
 
 	@JsonProperty("attributes")
@@ -36,7 +35,6 @@ public class InsightType {
 		this.abbreviation = "IT" + timeStamp;
 		this.name = "IT" + timeStamp + "Name";
 		this.description = "IT" + timeStamp + "Desc";
-        //EFFIEE PUT BACK
 		this.attributes = new ArrayList<InsightTypeAttribute>() {
 			{
 				add(new InsightTypeAttribute());
@@ -53,14 +51,6 @@ public class InsightType {
 
 	public InsightType(InsightType insightType) {
 		this(insightType.getAbbreviation(), insightType.getName(), insightType.getDescription(), insightType.getAttributes());
-	}
-
-	public String getInsightTypeId() {
-		return insightTypeId;
-	}
-
-	public void setInsightTypeId(String insightTypeId) {
-		this.insightTypeId = insightTypeId;
 	}
 
 	public String getAbbreviation() {
@@ -101,6 +91,10 @@ public class InsightType {
 
 	public void set_links(Links _links) {
 		this._links = _links;
+	}
+
+	public String getInsightTypeId() {
+		return insightTypeId;
 	}
 
 	// TODO:
