@@ -73,6 +73,14 @@ public abstract class Insight {
 		this.tenantId = tenantId;
 	}
 
+	public String getInsightTypeId() {
+		return insightTypeId;
+	}
+
+	public void setInsightTypeId(String insightTypeId) {
+		this.insightTypeId = insightTypeId;
+	}
+
 	public String getEventDate() {
 		return eventDate;
 	}
@@ -170,7 +178,7 @@ public abstract class Insight {
 //				}
 
 				if (requestVal != null) {
-					//logger.info("Checking value of field " + fieldName);
+					logger.info("Checking value of field " + fieldName);
 					if (!requestVal.equals(responseVal)) {
 						equalityCheckFlag = false;
 						logger.error("Class Name: " + this.getClass().getName() + " --> Match failed on property: " + fieldName + ", Request Value: " + requestVal + ", Response Value: " + responseVal);

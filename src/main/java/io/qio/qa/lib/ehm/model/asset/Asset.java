@@ -151,7 +151,7 @@ public abstract class Asset {
 
 				if (requestVal != null) {
 					if (!requestVal.equals(responseVal)) {
-						//logger.info("Checking value of field " + fieldName);
+						logger.info("Checking value of field " + fieldName);
 						equalityCheckFlag = false;
 						logger.error("Class Name: " + this.getClass().getName() + " --> Match failed on property: " + fieldName + ", Request Value: " + requestVal + ", Response Value: " + responseVal);
 						break;
