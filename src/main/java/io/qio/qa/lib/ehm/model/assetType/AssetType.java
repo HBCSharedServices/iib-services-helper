@@ -19,7 +19,6 @@ public class AssetType {
 	private String description;
 
 	// returned in the response of a POST request
-	@JsonProperty("assetTypeId")
 	private String assetTypeId;
 
 	@JsonProperty("attributes")

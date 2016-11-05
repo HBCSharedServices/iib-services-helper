@@ -110,17 +110,12 @@ public class ActivityType {
 					Collections.sort((List) responseVal);
 				}
 
-				if (fieldName.equals("systemDefined")) {
-					//logger.info("Skip the value checking for field " + fieldName);
-				} else {
+				if (requestVal != null) {
 					logger.info("Checking value of field " + fieldName);
-					if (requestVal != null) {
-						if (!requestVal.equals(responseVal)) {
-							equalityCheckFlag = false;
-							logger.error("Class Name: " + this.getClass().getName() + " --> Match failed on property: " + fieldName + ", Request Value: " + requestVal + ", Response Value: "
-									+ responseVal);
-							break;
-						}
+					if (!requestVal.equals(responseVal)) {
+						equalityCheckFlag = false;
+						logger.error("Class Name: " + this.getClass().getName() + " --> Match failed on property: " + fieldName + ", Request Value: " + requestVal + ", Response Value: " + responseVal);
+						break;
 					}
 				}
 			}
