@@ -11,21 +11,19 @@ import io.qio.qa.lib.ehm.model.insightType.InsightType;
 import io.qio.qa.lib.ehm.model.insightType.helper.AttributeDataType;
 import io.qio.qa.lib.ehm.model.tenant.Tenant;
 
+import io.qio.qa.lib.common.BaseHelper;
+
 public class InsightRequestHelper {
 	InsightRequest insight = null;
 	InsightTypeUtil insightTypeUtil = null;
 	TenantUtil tenantUtil = null;
 
 	private void initDefaultInsight(String  insightTypeId, String tenantId) {
-		java.util.Date date = new java.util.Date();
-		String timestamp = Long.toString(date.getTime());
-		insight = new InsightRequest(timestamp, insightTypeId, tenantId);
+		insight = new InsightRequest(BaseHelper.getCurrentTimeStamp(), insightTypeId, tenantId);
 	}
 
 	public InsightRequest getInsightWithPredefinedInsightTypeAndTenant(String insightTypeId, String tenantId) {
 		initDefaultInsight(insightTypeId, tenantId);
-//		insight.setInsightTypeId(insightTypeId);
-//		insight.setTenantId(tenantId);
 		return insight;
 	}
 
