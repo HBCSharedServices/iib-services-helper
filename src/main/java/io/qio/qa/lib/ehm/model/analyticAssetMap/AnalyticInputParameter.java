@@ -4,10 +4,9 @@
  */
 package io.qio.qa.lib.ehm.model.analyticAssetMap;
 
-import io.qio.qa.lib.ehm.model.common.Links;
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.annotate.JsonProperty;
-
+import io.qio.qa.lib.common.Links;
 import java.lang.reflect.Field;
 
 public class AnalyticInputParameter implements Comparable {
