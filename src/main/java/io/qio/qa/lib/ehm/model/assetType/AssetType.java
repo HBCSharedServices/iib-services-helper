@@ -4,7 +4,7 @@
  */
 package io.qio.qa.lib.ehm.model.assetType;
 
-import io.qio.qa.lib.ehm.model.common.Links;
+import io.qio.qa.lib.common.Links;
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.annotate.JsonProperty;
 

@@ -4,7 +4,7 @@
  */
 package io.qio.qa.lib.ehm.model.insight;
 
-import io.qio.qa.lib.ehm.model.common.Links;
+import io.qio.qa.lib.common.Links;
 import io.qio.qa.lib.common.BaseHelper;
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.annotate.JsonProperty;

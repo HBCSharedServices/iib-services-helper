@@ -11,7 +11,7 @@ import io.qio.qa.lib.ehm.model.insightType.InsightType;
 import io.qio.qa.lib.ehm.model.insightType.helper.AttributeDataType;
 import io.qio.qa.lib.ehm.model.tenant.Tenant;
 
-import io.qio.qa.lib.common.BaseHelper;
+import static io.qio.qa.lib.common.BaseHelper.getCurrentTimeStamp;
 
 public class InsightRequestHelper {
 	InsightRequest insight = null;
@@ -19,7 +19,7 @@ public class InsightRequestHelper {
 	TenantUtil tenantUtil = null;
 
 	private void initDefaultInsight(String  insightTypeId, String tenantId) {
-		insight = new InsightRequest(BaseHelper.getCurrentTimeStamp(), insightTypeId, tenantId);
+		insight = new InsightRequest(getCurrentTimeStamp(), insightTypeId, tenantId);
 	}
 
 	public InsightRequest getInsightWithPredefinedInsightTypeAndTenant(String insightTypeId, String tenantId) {
