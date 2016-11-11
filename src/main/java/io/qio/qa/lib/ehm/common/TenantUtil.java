@@ -10,7 +10,7 @@ import io.qio.qa.lib.ehm.apiHelpers.tenant.MTenantAPIHelper;
 import io.qio.qa.lib.ehm.model.tenant.Tenant;
 import io.qio.qa.lib.ehm.model.tenant.helper.TenantHelper;
 import io.qio.qa.lib.common.MAbstractAPIHelper;
-import io.qio.qa.lib.ehm.model.userGroup.UserGroup;
+import io.qio.qa.lib.idm.model.userGroup.UserGroup;
 import io.qio.qa.lib.idm.apiHelpers.MUserGroupAPIHelper;
 
 import org.apache.log4j.Logger;
