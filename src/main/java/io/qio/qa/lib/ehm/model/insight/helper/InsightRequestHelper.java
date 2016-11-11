@@ -1,4 +1,4 @@
-/**
+﻿/**
  * © Qio Technologies Ltd. 2016. All rights reserved.
  * CONFIDENTIAL AND PROPRIETARY INFORMATION OF QIO TECHNOLOGIES LTD.
  */
@@ -10,21 +10,20 @@ import io.qio.qa.lib.ehm.model.insight.InsightRequest;
 import io.qio.qa.lib.ehm.model.insightType.InsightType;
 import io.qio.qa.lib.ehm.model.insightType.helper.AttributeDataType;
 import io.qio.qa.lib.ehm.model.tenant.Tenant;
-import static io.qio.qa.lib.common.BaseHelper.getCurrentTimeStamp;
+
+import io.qio.qa.lib.common.BaseHelper;
 
 public class InsightRequestHelper {
 	InsightRequest insight = null;
 	InsightTypeUtil insightTypeUtil = null;
 	TenantUtil tenantUtil = null;
 
-	private void initDefaultInsight() {
-		insight = new InsightRequest(getCurrentTimeStamp(), "", "");
+	private void initDefaultInsight(String  insightTypeId, String tenantId) {
+		insight = new InsightRequest(BaseHelper.getCurrentTimeStamp(), insightTypeId, tenantId);
 	}
 
 	public InsightRequest getInsightWithPredefinedInsightTypeAndTenant(String insightTypeId, String tenantId) {
-		initDefaultInsight();
-		insight.setInsightTypeId(insightTypeId);
-		insight.setTenantId(tenantId);
+		initDefaultInsight(insightTypeId, tenantId);
 		return insight;
 	}
 

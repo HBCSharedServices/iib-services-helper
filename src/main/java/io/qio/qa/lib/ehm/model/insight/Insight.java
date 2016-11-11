@@ -177,7 +177,7 @@ public abstract class Insight {
 //					}
 //				}
 
-				if (requestVal != null) {
+				if (requestVal != null && fieldName != "insightTypeId") {
 					logger.info("Checking value of field " + fieldName);
 					if (!requestVal.equals(responseVal)) {
 						equalityCheckFlag = false;
