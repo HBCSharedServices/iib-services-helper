@@ -17,6 +17,7 @@ public class InsightRequestHelper {
 	InsightTypeUtil insightTypeUtil = null;
 	TenantUtil tenantUtil = null;
 
+
 	private void initDefaultInsight(String insightTypeId, String tenantId) {
 		insight = new InsightRequest(getCurrentTimeStamp(), insightTypeId, tenantId);
 	}
@@ -25,6 +26,7 @@ public class InsightRequestHelper {
 		initDefaultInsight(insightTypeId, tenantId);
 		return insight;
 	}
+
 	public InsightRequest getInsightWithCreatingInsightTypeAndTenant(String insightTypeFlavor, AttributeDataType attributeDataType) {
 		insightTypeUtil = new InsightTypeUtil();
 		tenantUtil = new TenantUtil();
