@@ -4,13 +4,13 @@
  */
 package io.qio.qa.lib.ehm.model.insight.helper;
 
-//import io.qio.qa.lib.ehm.common.APITestUtil;
 import io.qio.qa.lib.ehm.common.InsightTypeUtil;
 import io.qio.qa.lib.ehm.common.TenantUtil;
 import io.qio.qa.lib.ehm.model.insight.InsightRequest;
 import io.qio.qa.lib.ehm.model.insightType.InsightType;
 import io.qio.qa.lib.ehm.model.insightType.helper.AttributeDataType;
 import io.qio.qa.lib.ehm.model.tenant.Tenant;
+import static io.qio.qa.lib.common.BaseHelper.getCurrentTimeStamp;
 
 public class InsightRequestHelper {
 	InsightRequest insight = null;
@@ -18,9 +18,7 @@ public class InsightRequestHelper {
 	TenantUtil tenantUtil = null;
 
 	private void initDefaultInsight() {
-		java.util.Date date = new java.util.Date();
-		String timestamp = Long.toString(date.getTime());
-		insight = new InsightRequest(timestamp, "", "");
+		insight = new InsightRequest(getCurrentTimeStamp(), "", "");
 	}
 
 	public InsightRequest getInsightWithPredefinedInsightTypeAndTenant(String insightTypeId, String tenantId) {
