@@ -4,7 +4,6 @@
  */
 package io.qio.qa.lib.ehm.model.asset.helper;
 
-
 import io.qio.qa.lib.ehm.common.AssetTypeUtil;
 import io.qio.qa.lib.ehm.common.TenantUtil;
 import io.qio.qa.lib.ehm.model.asset.AssetRequest;
@@ -12,6 +11,7 @@ import io.qio.qa.lib.ehm.model.assetType.AssetType;
 import io.qio.qa.lib.ehm.model.assetType.helper.AttributeDataType;
 import io.qio.qa.lib.ehm.model.assetType.helper.ParameterDataType;
 import io.qio.qa.lib.ehm.model.tenant.Tenant;
+import static io.qio.qa.lib.common.BaseHelper.getCurrentTimeStamp;
 
 public class AssetRequestHelper {
 	AssetRequest asset = null;
@@ -19,9 +19,7 @@ public class AssetRequestHelper {
 	TenantUtil tenantUtil = null;
 
 	private void initDefaultAsset() {
-		java.util.Date date = new java.util.Date();
-		String timestamp = Long.toString(date.getTime());
-		asset = new AssetRequest(timestamp, "", "");
+		asset = new AssetRequest(getCurrentTimeStamp(), "", "");
 	}
 
 	public AssetRequest getAssetWithPredefinedAssetTypeAndTenant(String assetTypeId, String tenantId) {

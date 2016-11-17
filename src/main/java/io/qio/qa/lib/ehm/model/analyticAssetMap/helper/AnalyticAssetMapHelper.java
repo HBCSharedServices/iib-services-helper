@@ -4,10 +4,10 @@
  */
 package io.qio.qa.lib.ehm.model.analyticAssetMap.helper;
 
-
 import io.qio.qa.lib.ehm.model.analyticAssetMap.AnalyticAssetMap;
 import io.qio.qa.lib.ehm.model.analyticAssetMap.AnalyticInputParameter;
 import io.qio.qa.lib.ehm.model.analyticAssetMap.AssetTemplateModelAttribute;
+import static io.qio.qa.lib.common.BaseHelper.getCurrentTimeStamp;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -21,9 +21,7 @@ public class AnalyticAssetMapHelper {
 	 * This method is invoked from each of the following methods to make sure every time a new analytic asset map is created with a unique timestamp.
 	 */
 	private void initDefaultAnalyticAssetMap() {
-		java.util.Date date = new java.util.Date();
-		String timestamp = Long.toString(date.getTime());
-		analyticAssetMap = new AnalyticAssetMap(timestamp, null);
+		analyticAssetMap = new AnalyticAssetMap(getCurrentTimeStamp(), null);
 	}
 
 	public AnalyticAssetMap getAnalyticAssetMapWithNoAssetTemplateModelAttributeAndAnalyticInputParameters() {

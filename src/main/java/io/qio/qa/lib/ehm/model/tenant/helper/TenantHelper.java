@@ -6,15 +6,14 @@ package io.qio.qa.lib.ehm.model.tenant.helper;
 
 
 import io.qio.qa.lib.ehm.model.tenant.Tenant;
+import static io.qio.qa.lib.common.BaseHelper.getCurrentTimeStamp;
 
 public class TenantHelper {
 	Tenant tenant;
 	
 	// creates a tenant with default values for its properties.
 	private void initDefaultTenant() {
-		java.util.Date date= new java.util.Date();
-		String timestamp = Long.toString(date.getTime());
-		tenant = new Tenant(timestamp);
+		tenant = new Tenant(getCurrentTimeStamp());
 	}
 	
 	/*

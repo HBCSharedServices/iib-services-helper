@@ -39,9 +39,6 @@ public class TenantUtil extends BaseTestUtil {
 		groupAPI = new MUserGroupAPIHelper();
 		String oauthMicroservice = microserviceConfig.getString(oauthMicroserviceName + "." + envRuntime);
 
-//		logger.info(groupAPI.getClass().toString());
-//		logger.info(apiRequestHelper.getClass().toString());
-
 		UserGroup committedGroup = MAbstractAPIHelper.getListResponseObjForRetrieveBySearch(oauthMicroservice, environment, "byNameLike", tenantId, apiRequestHelper, groupAPI, UserGroup.class).get(0);
 		return(BaseHelper.getElementId(committedGroup.get_links().getSelfLink().getHref()));
 	}

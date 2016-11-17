@@ -6,6 +6,7 @@ package io.qio.qa.lib.ehm.model.insightType.helper;
 
 import io.qio.qa.lib.ehm.model.insightType.InsightType;
 import io.qio.qa.lib.ehm.model.insightType.InsightTypeAttribute;
+import static io.qio.qa.lib.common.BaseHelper.getCurrentTimeStamp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +19,7 @@ public class InsightTypeHelper {
 	 * This method is invoked from each of the following methods to make sure every time a new insighttype is created with a unique timestamp.
 	 */
 	private void initDefaultInsightType() {
-		java.util.Date date = new java.util.Date();
-		String timestamp = Long.toString(date.getTime());
-		insightType = new InsightType(timestamp);
+		insightType = new InsightType(getCurrentTimeStamp());
 	}
 
 

@@ -7,6 +7,7 @@ package io.qio.qa.lib.ehm.model.assetType.helper;
 import io.qio.qa.lib.ehm.model.assetType.AssetType;
 import io.qio.qa.lib.ehm.model.assetType.AssetTypeAttribute;
 import io.qio.qa.lib.ehm.model.assetType.AssetTypeParameter;
+import static io.qio.qa.lib.common.BaseHelper.getCurrentTimeStamp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +19,7 @@ public class AssetTypeHelper {
 	 * This method is invoked from each of the following methods to make sure every time a new assettype is created with a unique timestamp.
 	 */
 	private void initDefaultAssetType() {
-		java.util.Date date = new java.util.Date();
-		String timestamp = Long.toString(date.getTime());
-		assetType = new AssetType(timestamp);
+		assetType = new AssetType(getCurrentTimeStamp());
 	}
 
 	/*
