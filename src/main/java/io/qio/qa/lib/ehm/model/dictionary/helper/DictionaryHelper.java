@@ -15,8 +15,12 @@ import java.util.List;
 import static io.qio.qa.lib.common.BaseHelper.getCurrentTimeStamp;
 
 public class DictionaryHelper {
-	Dictionary dictionary = null;
-	AssetUtil assetUtil = null;
+	private Dictionary dictionary;
+	private AssetUtil assetUtil = new AssetUtil();
+	private AssetTypeParameter parameter;
+	private List<Dictionary> dictionaryList;
+	private String tag;
+
 	final static Logger logger = Logger.getRootLogger();
 
 	private void initDefaultDictionary() {
@@ -43,7 +47,8 @@ public class DictionaryHelper {
 
 	public Dictionary getDictionaryWithPredefinedAssetAndTenantForParameter(String tag, String assetId, String tenantId, String parameterId, String sourceUnit, String conversionFormula){
 		initDefaultDictionary();
-		AssetTypeParameter parameter = assetUtil.getAssetTypeParameterObjectForAssetAndParameterId(assetId, parameterId);
+		parameter = assetUtil.getAssetTypeParameterObjectForAssetAndParameterId(assetId, parameterId);
+
 		dictionary.setTag(tag);
 		dictionary.setAsset(assetId);
 		dictionary.setTenant(tenantId);
@@ -56,9 +61,7 @@ public class DictionaryHelper {
 	}
 
 	public List<Dictionary> getDictionaryWithCreatingAssetAndTenant(String assetTypeFlavor, AttributeDataType attributeDataType, ParameterDataType parameterDataType){
-		List<Dictionary> dictionaryList = null;
-		assetUtil = new AssetUtil();
-		String tag;
+		dictionaryList = null;
 
 		AssetResponse assetResponse = assetUtil.createAssetWithCreatingAssetTypeAndTenant(assetTypeFlavor, attributeDataType, parameterDataType);
 		String assetId = assetResponse.getAssetId();
@@ -72,9 +75,7 @@ public class DictionaryHelper {
 	}
 
 	public List<Dictionary> getDictionaryWithPredefinedTenantWithCreatingAsset(String assetTypeFlavor, AttributeDataType attributeDataType, ParameterDataType parameterDataType, String tenantId, String conversionFormula){
-		List<Dictionary> dictionaryList = null;
-		assetUtil = new AssetUtil();
-		String tag;
+		dictionaryList = null;
 
 		AssetResponse assetResponse = assetUtil.createAssetWithPredefinedTenantAndWithCreatingAssetType(assetTypeFlavor, attributeDataType, parameterDataType, tenantId);
 		String assetId = assetResponse.getAssetId();
