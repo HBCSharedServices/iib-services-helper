@@ -5,7 +5,6 @@
 package io.qio.qa.lib.ehm.common;
 
 import org.apache.log4j.Logger;
-
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 import io.qio.qa.lib.apiHelpers.APIRequestHelper;
@@ -33,10 +32,7 @@ public class BaseTestUtil {
 	final static Logger logger = Logger.getRootLogger();
 
 	public void initSetup(String userType) {
-		userConfig = ConfigFactory.load("user_creds.conf");
-		envConfig = ConfigFactory.load("environments.conf");
-		microserviceConfig = ConfigFactory.load("microservices.conf");
-		envRuntimeConfig = ConfigFactory.load("environment_runtime.conf");
+		baseInitLoadConfigurationFiles();
 
 		userName = userConfig.getString("user." + userType + ".username");
 		password = userConfig.getString("user." + userType + ".password");
@@ -59,9 +55,7 @@ public class BaseTestUtil {
 	}
 
 	public void baseInitMongoSetupBeforeAllTests(String mongoName) {
-		logger.info("sdsdfsdfds"+ mongoName);
 		mongoUsername = mongoDbConfig.getString(mongoName+".db.user."+envRuntime);
-		logger.info("xxxx");
 		mongoPassword = mongoDbConfig.getString(mongoName+".db.password."+envRuntime);
 		mongoDbServer = mongoDbConfig.getString(mongoName+".db.server."+envRuntime);
 		mongoDbServerPort = mongoDbConfig.getString(mongoName+".db.serverPort."+envRuntime);

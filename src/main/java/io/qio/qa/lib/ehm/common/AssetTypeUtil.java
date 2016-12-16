@@ -11,7 +11,6 @@ import io.qio.qa.lib.ehm.model.assetType.helper.AttributeDataType;
 import io.qio.qa.lib.ehm.model.assetType.helper.ParameterDataType;
 import io.qio.qa.lib.common.MAbstractAPIHelper;
 import io.qio.qa.lib.mongoHelpers.MAbstractMongoHelper;
-import io.qio.qa.lib.mongoHelpers.MAbstractMongoHelper;
 import org.bson.Document;
 import static io.qio.qa.lib.common.BaseHelper.getCurrentTimeStamp;
 
@@ -74,9 +73,7 @@ public class AssetTypeUtil extends BaseTestUtil {
 
 	public String getAssetTypeIdBasedOnAbbreviationSearch(String abbreviation) {
 		initSetup(userType);
-		logger.info("AADDDDDDDDDDDDDDDDDDDDDDDDDDD");
 		baseInitMongoSetupBeforeAllTests("asset");
-		logger.info("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
 		String assetURI = "mongodb://" + mongoUsername + ":" + mongoPassword + "@" + mongoDbServer + ":" + mongoDbServerPort + "/" + mongoDb;
 
 		Document queryAssetType = new Document();
