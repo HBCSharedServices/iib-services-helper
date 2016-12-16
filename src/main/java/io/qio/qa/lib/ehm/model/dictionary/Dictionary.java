@@ -144,7 +144,7 @@ public class Dictionary {
 		//CREATE an Cassandra DELETE statement
 		final Logger logger = Logger.getRootLogger();
 
-		String deleteCommand = "DELETE FROM " + "ingestion_output.dictionary WHERE tenant_id='" + this.tenant + "' AND asset_id='" + this.asset + "' AND tag='" + tag +"'";
+		String deleteCommand = "DELETE FROM " + "ingestion_output.dictionary WHERE tenant_id='" + this.tenant + "' AND tag='" + tag +"'";
 		return deleteCommand;
 	}
 
