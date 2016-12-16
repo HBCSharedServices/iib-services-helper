@@ -40,9 +40,9 @@ public class BaseTestUtil {
 
 		userName = userConfig.getString("user." + userType + ".username");
 		password = userConfig.getString("user." + userType + ".password");
-		
-		environment = envConfig.getString("env.name");
+
 		envRuntime = envRuntimeConfig.getString("env.runtime");
+		environment = envConfig.getString("env.name" + "." + envRuntime);
 		
 		String oauthMicroservice = microserviceConfig.getString(oauthMicroserviceName + "." + envRuntime);
 		apiRequestHelper = new APIRequestHelper(userName, password, oauthMicroservice);
