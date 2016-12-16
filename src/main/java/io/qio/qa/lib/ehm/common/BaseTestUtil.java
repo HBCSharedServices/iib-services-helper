@@ -21,6 +21,14 @@ public class BaseTestUtil {
 	protected Config envConfig;
 	protected Config microserviceConfig;
 	protected Config envRuntimeConfig;
+
+	protected String mongoDbServer;
+	protected String mongoDbServerPort;
+	protected String mongoDb;
+	protected String mongoUsername;
+	protected String mongoPassword;
+
+	protected Config mongoDbConfig;
 	
 	final static Logger logger = Logger.getRootLogger();
 
@@ -40,4 +48,21 @@ public class BaseTestUtil {
 		apiRequestHelper = new APIRequestHelper(userName, password, oauthMicroservice);
 	}
 
+	public void baseInitLoadConfigurationFiles() {
+		userConfig = ConfigFactory.load("user_creds.conf");
+		envConfig = ConfigFactory.load("environments.conf");
+		envRuntimeConfig = ConfigFactory.load("environment_runtime.conf");
+		microserviceConfig = ConfigFactory.load("microservices.conf");
+		mongoDbConfig = ConfigFactory.load("mongodbs.conf");
+
+		envRuntime = envRuntimeConfig.getString("env.runtime");
+	}
+
+	public void baseInitMongoSetupBeforeAllTests(String mongoName) {
+		mongoUsername = mongoDbConfig.getString(mongoName+".db.user."+envRuntime);
+		mongoPassword = mongoDbConfig.getString(mongoName+".db.password."+envRuntime);
+		mongoDbServer = mongoDbConfig.getString(mongoName+".db.server."+envRuntime);
+		mongoDbServerPort = mongoDbConfig.getString(mongoName+".db.serverPort."+envRuntime);
+		mongoDb = mongoDbConfig.getString(mongoName+".db."+envRuntime);
+	}
 }

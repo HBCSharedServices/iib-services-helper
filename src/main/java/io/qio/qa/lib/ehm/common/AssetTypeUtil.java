@@ -10,6 +10,10 @@ import io.qio.qa.lib.ehm.model.assetType.helper.AssetTypeHelper;
 import io.qio.qa.lib.ehm.model.assetType.helper.AttributeDataType;
 import io.qio.qa.lib.ehm.model.assetType.helper.ParameterDataType;
 import io.qio.qa.lib.common.MAbstractAPIHelper;
+import io.qio.qa.lib.mongoHelpers.MAbstractMongoHelper;
+import io.qio.qa.lib.mongoHelpers.MAbstractMongoHelper;
+import org.bson.Document;
+import static io.qio.qa.lib.common.BaseHelper.getCurrentTimeStamp;
 
 public class AssetTypeUtil extends BaseTestUtil {
 
@@ -55,5 +59,37 @@ public class AssetTypeUtil extends BaseTestUtil {
 			requestAssetType = assetTypeHelper.getAssetTypeWithNoAttributesAndParameters();
 		}
 		return MAbstractAPIHelper.getResponseObjForCreate(requestAssetType, assetTypeMicroservice, environment, apiRequestHelper, assetTypeAPI, AssetType.class);
+	}
+
+	public AssetType createAssetTypeBasedOnExistingAssetType(String existingAssetTypeId, String newAbbreviation, String newDesc) {
+		initSetup(userType);
+		String assetTypeMicroservice = microserviceConfig.getString(MICROSERVICE_NAME + "." + envRuntime);
+		assetTypeHelper = new AssetTypeHelper();
+
+		AssetType assetTypeQueryResponse = MAbstractAPIHelper.getResponseObjForRetrieve(assetTypeMicroservice, environment, existingAssetTypeId, apiRequestHelper, assetTypeAPI, AssetType.class);
+		assetTypeQueryResponse.setAbbreviation(newAbbreviation+"-"+getCurrentTimeStamp());
+		assetTypeQueryResponse.setDescription(newDesc);
+		return MAbstractAPIHelper.getResponseObjForCreate(assetTypeQueryResponse, assetTypeMicroservice, environment, apiRequestHelper, assetTypeAPI, AssetType.class);
+	}
+
+	public String getAssetTypeIdBasedOnAbbreviationSearch(String abbreviation) {
+		initSetup(userType);
+		baseInitMongoSetupBeforeAllTests("asset");
+		String assetURI = "mongodb://" + mongoUsername + ":" + mongoPassword + "@" + mongoDbServer + ":" + mongoDbServerPort + "/" + mongoDb;
+
+		Document queryAssetType = new Document();
+		queryAssetType.put("abbreviation", abbreviation);
+
+		Object asssetTypeColItem = MAbstractMongoHelper.findOneCollectionItemInMongoDBCollection(queryAssetType, assetURI, mongoDb, "assettype");
+
+		if (asssetTypeColItem == null) {
+			return null;
+		} else {
+			String asssetTypeColItemString = asssetTypeColItem.toString();
+			int start = asssetTypeColItemString.indexOf("_id=") + 4;
+			int end = asssetTypeColItemString.indexOf("_class=") - 2;
+
+			return asssetTypeColItemString.substring(start, end);
+		}
 	}
 }
