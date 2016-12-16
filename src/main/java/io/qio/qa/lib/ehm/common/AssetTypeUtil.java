@@ -74,7 +74,9 @@ public class AssetTypeUtil extends BaseTestUtil {
 
 	public String getAssetTypeIdBasedOnAbbreviationSearch(String abbreviation) {
 		initSetup(userType);
+		logger.info("AADDDDDDDDDDDDDDDDDDDDDDDDDDD");
 		baseInitMongoSetupBeforeAllTests("asset");
+		logger.info("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
 		String assetURI = "mongodb://" + mongoUsername + ":" + mongoPassword + "@" + mongoDbServer + ":" + mongoDbServerPort + "/" + mongoDb;
 
 		Document queryAssetType = new Document();
