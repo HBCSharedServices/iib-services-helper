@@ -7,9 +7,6 @@ package io.qio.qa.lib.ehm.model.dictionary;
 import io.qio.qa.lib.common.Links;
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.annotate.JsonProperty;
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormatter;
-import org.joda.time.format.ISODateTimeFormat;
 import java.lang.reflect.Field;
 
 public class Dictionary {
@@ -21,6 +18,7 @@ public class Dictionary {
 	private String timezone;
 	private String sourceUint;
 	private String destinationUnit;
+	private String conversionFormula;
 
 	// returned in the response of a POST request
 	@JsonProperty("_links")
@@ -32,13 +30,14 @@ public class Dictionary {
 	@SuppressWarnings("serial")
 	public Dictionary(String timeStamp) {
 		this.tag = timeStamp;
-		this.destinationUnit = "D SU" + timeStamp;
-		this.sourceUint = "D SU" + timeStamp;
+		this.destinationUnit = "DDU" + timeStamp;
+		this.sourceUint = "DSU" + timeStamp;
 		this.type = "String";
-		this.timezone = "UTC+5";
+		this.timezone = "UTC";
+		this.conversionFormula = "val";
 	}
 
-	public Dictionary(String tenant, String asset, String tag, String parameter, String type, String timezone, String sourceUint, String destinationUnit) {
+	public Dictionary(String tenant, String asset, String tag, String parameter, String type, String timezone, String sourceUint, String destinationUnit, String conversionFormula) {
 		this.tenant = tenant;
 		this.asset = asset;
 		this.tag = tag;
@@ -47,6 +46,7 @@ public class Dictionary {
 		this.timezone = timezone;
 		this.sourceUint = sourceUint;
 		this.destinationUnit = destinationUnit;
+		this.conversionFormula = conversionFormula;
 	}
 
 	public String getTenant() {
@@ -113,6 +113,14 @@ public class Dictionary {
 		this.destinationUnit = destinationUnit;
 	}
 
+	public String getConversionFormula() {
+		return conversionFormula;
+	}
+
+	public void setConversionFormula(String conversionFormula) {
+		this.conversionFormula = conversionFormula;
+	}
+
 	public Links get_links() {
 		return _links;
 	}
@@ -121,15 +129,23 @@ public class Dictionary {
 		this._links = _links;
 	}
 
-	public String toCassandraInsert () {
+	public String toCassandraInsert() {
 		//CREATE an Cassandra INSERT statement
 		final Logger logger = Logger.getRootLogger();
 
 		String insertSpaceAndTable = "INSERT INTO " + "ingestion_output.dictionary ";
-		String fieldList = "(tenant_id, asset_id, parameter_id, tag, xxxSU, yyyDU, zzzTy, www) VALUES (";
-		String fieldValues = this.tenant + ", " + this.asset + ", " + this.parameter + ", " + this.tag + ", " + this.sourceUint + ", " + this.destinationUnit + ", " + this.type + ", " + this.timezone + ")";
+		String fieldList = "(tenant_id, asset_id, parameter_id, tag, source_unit, destination_unit, parameter_type, source_timezone, conversion_formula) VALUES (";
+		String fieldValues = this.tenant + ", " + this.asset + ", " + this.parameter + ", " + this.tag + ", " + this.sourceUint + ", " + this.destinationUnit + ", " + this.type + ", " + this.timezone + ", " + this.conversionFormula+")";
 
-		return fieldList + fieldValues;
+		return insertSpaceAndTable + fieldList + fieldValues;
+	}
+
+	public String toCassandraDelete() {
+		//CREATE an Cassandra DELETE statement
+		final Logger logger = Logger.getRootLogger();
+
+		String deleteCommand = "DELETE FROM " + "ingestion_output.dictionary WHERE tenant_id=" + this.tenant + " AND asset_id=" + this.asset + " AND tag=" + tag;
+		return deleteCommand;
 	}
 
 	@Override
@@ -145,7 +161,7 @@ public class Dictionary {
 			for (Field field : fields) {
 				Object requestVal = field.get(this);
 				Object responseVal = field.get(responseObj);
-				if (requestVal != null)
+				if (requestVal != null && !field.getName().equals("conversionFormula"))
 					if (!requestVal.equals(responseVal)) {
 						equalityCheckFlag = false;
 						logger.error("Class Name: " + this.getClass().getName() + " --> Match failed on property: "
