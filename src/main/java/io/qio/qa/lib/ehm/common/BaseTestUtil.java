@@ -59,7 +59,6 @@ public class BaseTestUtil {
 		mongoPassword = mongoDbConfig.getString(mongoName+".db.password."+envRuntime);
 		mongoDbServer = mongoDbConfig.getString(mongoName+".db.server."+envRuntime);
 		mongoDbServerPort = mongoDbConfig.getString(mongoName+".db.serverPort."+envRuntime);
-		logger.info("sdsdfsdfds");
 		mongoDb = mongoDbConfig.getString(mongoName+".db."+envRuntime);
 	}
 }
