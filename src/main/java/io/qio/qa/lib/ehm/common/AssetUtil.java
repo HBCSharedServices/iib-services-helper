@@ -88,4 +88,14 @@ public class AssetUtil extends BaseTestUtil {
 		}
 		return null;
 	}
+
+	public AssetResponse getAssetObjectForAssetId (String assetId) {
+		initSetup(userType);
+
+		String assetMicroservice = microserviceConfig.getString(MICROSERVICE_NAME + "." + envRuntime);
+
+		AssetResponse committedAsset = MAbstractAPIHelper.getResponseObjForRetrieve(assetMicroservice, environment, assetId, apiRequestHelper, assetAPI, AssetResponse.class);
+
+		return committedAsset;
+	}
 }

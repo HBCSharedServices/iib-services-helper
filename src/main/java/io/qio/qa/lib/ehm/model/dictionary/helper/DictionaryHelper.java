@@ -32,7 +32,7 @@ public class DictionaryHelper {
 		return dictionary;
 	}
 
-	public Dictionary getDictionaryWithPredefinedAssetAndTenantForParameter(String tag, String assetId, String tenantId, String parameterId, String dataType, String sourceUnit, String destinationUnit, String conversionFormula){
+	public Dictionary getDictionaryForPredefinedAssetAndTenantForAParameter(String tag, String assetId, String tenantId, String parameterId, String dataType, String sourceUnit, String destinationUnit, String conversionFormula){
 		initDefaultDictionary();
 		dictionary.setTag(tag);
 		dictionary.setAsset(assetId);
@@ -45,7 +45,7 @@ public class DictionaryHelper {
 		return dictionary;
 	}
 
-	public Dictionary getDictionaryWithPredefinedAssetAndTenantForParameter(String tag, String assetId, String tenantId, String parameterId, String sourceUnit, String conversionFormula){
+	public Dictionary getDictionaryForPredefinedAssetAndTenantForAParameter(String tag, String assetId, String tenantId, String parameterId, String sourceUnit, String conversionFormula){
 		initDefaultDictionary();
 		parameter = assetUtil.getAssetTypeParameterObjectForAssetAndParameterId(assetId, parameterId);
 
@@ -60,7 +60,21 @@ public class DictionaryHelper {
 		return dictionary;
 	}
 
-	public List<Dictionary> getDictionaryWithCreatingAssetAndTenant(String assetTypeFlavor, AttributeDataType attributeDataType, ParameterDataType parameterDataType){
+	public List<Dictionary> getDictionaryListForPredefinedAsset(String assetId){
+		dictionaryList = null;
+
+		AssetResponse asset = assetUtil.getAssetObjectForAssetId(assetId);
+		String tenantId = asset.getTenant();
+		List<AssetTypeParameter> parameters = asset.getAssetType().getParameters();
+
+		for (AssetTypeParameter parameter : parameters) {
+			tag = asset.getAbbreviation()+parameter.getAbbreviation();
+			dictionaryList.add(getDictionaryForPredefinedAssetAndTenantForAParameter(tag, assetId, tenantId, parameter.getParameterId(), parameter.getDatatype(), parameter.getBaseuom(), parameter.getBaseuom(), "val"));
+		}
+		return dictionaryList;
+	}
+
+	public List<Dictionary> getDictionaryListWithCreatingAssetAndTenant(String assetTypeFlavor, AttributeDataType attributeDataType, ParameterDataType parameterDataType){
 		dictionaryList = null;
 
 		AssetResponse assetResponse = assetUtil.createAssetWithCreatingAssetTypeAndTenant(assetTypeFlavor, attributeDataType, parameterDataType);
@@ -69,12 +83,12 @@ public class DictionaryHelper {
 		List<AssetTypeParameter> parameters = assetResponse.getAssetType().getParameters();
 		for (AssetTypeParameter parameter : parameters) {
 			tag = assetResponse.getAbbreviation()+parameter.getAbbreviation();
-			dictionaryList.add(getDictionaryWithPredefinedAssetAndTenantForParameter(tag, assetId, tenantId, parameter.getParameterId(), parameter.getDatatype(), parameter.getBaseuom(), parameter.getBaseuom(), "val"));
+			dictionaryList.add(getDictionaryForPredefinedAssetAndTenantForAParameter(tag, assetId, tenantId, parameter.getParameterId(), parameter.getDatatype(), parameter.getBaseuom(), parameter.getBaseuom(), "val"));
 		}
 		return dictionaryList;
 	}
 
-	public List<Dictionary> getDictionaryWithPredefinedTenantWithCreatingAsset(String assetTypeFlavor, AttributeDataType attributeDataType, ParameterDataType parameterDataType, String tenantId, String conversionFormula){
+	public List<Dictionary> getDictionaryListForPredefinedTenantWithCreatingAsset(String assetTypeFlavor, AttributeDataType attributeDataType, ParameterDataType parameterDataType, String tenantId, String conversionFormula){
 		dictionaryList = null;
 
 		AssetResponse assetResponse = assetUtil.createAssetWithPredefinedTenantAndWithCreatingAssetType(assetTypeFlavor, attributeDataType, parameterDataType, tenantId);
@@ -82,7 +96,7 @@ public class DictionaryHelper {
 		List<AssetTypeParameter> parameters = assetResponse.getAssetType().getParameters();
 		for (AssetTypeParameter parameter : parameters) {
 			tag = assetResponse.getAbbreviation()+parameter.getAbbreviation();
-			dictionaryList.add(getDictionaryWithPredefinedAssetAndTenantForParameter(tag, assetId, tenantId, parameter.getParameterId(), parameter.getDatatype(), parameter.getBaseuom(), parameter.getBaseuom(), conversionFormula));
+			dictionaryList.add(getDictionaryForPredefinedAssetAndTenantForAParameter(tag, assetId, tenantId, parameter.getParameterId(), parameter.getDatatype(), parameter.getBaseuom(), parameter.getBaseuom(), conversionFormula));
 		}
 		return dictionaryList;
 	}
