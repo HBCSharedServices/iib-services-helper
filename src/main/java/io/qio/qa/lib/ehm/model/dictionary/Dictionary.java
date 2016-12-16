@@ -134,8 +134,8 @@ public class Dictionary {
 		final Logger logger = Logger.getRootLogger();
 
 		String insertSpaceAndTable = "INSERT INTO " + "ingestion_output.dictionary ";
-		String fieldList = "(tenant_id, asset_id, parameter_id, tag, source_unit, destination_unit, parameter_type, source_timezone, conversion_formula) VALUES (";
-		String fieldValues = this.tenant + ", " + this.asset + ", " + this.parameter + ", " + this.tag + ", " + this.sourceUint + ", " + this.destinationUnit + ", " + this.type + ", " + this.timezone + ", " + this.conversionFormula+")";
+		String fieldList = "(tenant_id, asset_id, parameter_id, tag, source_unit, destination_unit, parameter_type, source_timezone, conversion_formula) VALUES ('";
+		String fieldValues = this.tenant + "', '" + this.asset + "', '" + this.parameter + "', '" + this.tag + "', '" + this.sourceUint + "', '" + this.destinationUnit + "', '" + this.type + "', '" + this.timezone + "', '" + this.conversionFormula+"')";
 
 		return insertSpaceAndTable + fieldList + fieldValues;
 	}
@@ -144,7 +144,7 @@ public class Dictionary {
 		//CREATE an Cassandra DELETE statement
 		final Logger logger = Logger.getRootLogger();
 
-		String deleteCommand = "DELETE FROM " + "ingestion_output.dictionary WHERE tenant_id=" + this.tenant + " AND asset_id=" + this.asset + " AND tag=" + tag;
+		String deleteCommand = "DELETE FROM " + "ingestion_output.dictionary WHERE tenant_id='" + this.tenant + "' AND asset_id='" + this.asset + "' AND tag='" + tag +"'";
 		return deleteCommand;
 	}
 
