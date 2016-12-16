@@ -41,6 +41,20 @@ public class DictionaryHelper {
 		return dictionary;
 	}
 
+	public Dictionary getDictionaryWithPredefinedAssetAndTenantForParameter(String tag, String assetId, String tenantId, String parameterId, String sourceUnit, String conversionFormula){
+		initDefaultDictionary();
+		AssetTypeParameter parameter = assetUtil.getAssetTypeParameterObjectForAssetAndParameterId(assetId, parameterId);
+		dictionary.setTag(tag);
+		dictionary.setAsset(assetId);
+		dictionary.setTenant(tenantId);
+		dictionary.setParameter(parameterId);
+		dictionary.setType(parameter.getDatatype());
+		dictionary.setSourceUint(sourceUnit);
+		dictionary.setDestinationUnit(parameter.getBaseuom());
+		dictionary.setConversionFormula(conversionFormula);
+		return dictionary;
+	}
+
 	public List<Dictionary> getDictionaryWithCreatingAssetAndTenant(String assetTypeFlavor, AttributeDataType attributeDataType, ParameterDataType parameterDataType){
 		List<Dictionary> dictionaryList = null;
 		assetUtil = new AssetUtil();

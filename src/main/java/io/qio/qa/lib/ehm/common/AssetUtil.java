@@ -9,6 +9,7 @@ import io.qio.qa.lib.ehm.model.asset.AssetRequest;
 import io.qio.qa.lib.ehm.model.asset.AssetResponse;
 import io.qio.qa.lib.ehm.model.asset.helper.AssetRequestHelper;
 import io.qio.qa.lib.ehm.model.assetType.AssetType;
+import io.qio.qa.lib.ehm.model.assetType.AssetTypeParameter;
 import io.qio.qa.lib.ehm.model.assetType.helper.AttributeDataType;
 import io.qio.qa.lib.ehm.model.assetType.helper.ParameterDataType;
 import io.qio.qa.lib.common.MAbstractAPIHelper;
@@ -73,5 +74,18 @@ public class AssetUtil extends BaseTestUtil {
 
 		AssetResponse committedAsset = MAbstractAPIHelper.getResponseObjForRetrieve(assetMicroservice, environment, assetId, apiRequestHelper, assetAPI, AssetResponse.class);
 		return(committedAsset.getAssetType());
+	}
+
+	public AssetTypeParameter getAssetTypeParameterObjectForAssetAndParameterId (String assetId, String parameterId) {
+		initSetup(userType);
+
+		String assetMicroservice = microserviceConfig.getString(MICROSERVICE_NAME + "." + envRuntime);
+
+		AssetResponse committedAsset = MAbstractAPIHelper.getResponseObjForRetrieve(assetMicroservice, environment, assetId, apiRequestHelper, assetAPI, AssetResponse.class);
+
+		for (AssetTypeParameter parameter : committedAsset.getAssetType().getParameters()) {
+			if (parameter.getParameterId().equals(parameterId)) return parameter;
+		}
+		return null;
 	}
 }
