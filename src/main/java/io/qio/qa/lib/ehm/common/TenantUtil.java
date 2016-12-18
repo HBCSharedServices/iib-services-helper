@@ -34,7 +34,7 @@ public class TenantUtil extends BaseTestUtil {
 		return MAbstractAPIHelper.getResponseObjForCreate(requestTenant, tenantMicroservice, environment, apiRequestHelper, tenantAPI, Tenant.class);
 	}
 
-	public String getIDMGroupForTenant (String tenantId) {
+	public String getIDMGroupForTenant(String tenantId) {
 		initSetup(userType);
 		groupAPI = new MUserGroupAPIHelper();
 		String oauthMicroservice = microserviceConfig.getString(oauthMicroserviceName + "." + envRuntime);
