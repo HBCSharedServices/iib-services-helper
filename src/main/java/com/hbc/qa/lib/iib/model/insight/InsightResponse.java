@@ -4,16 +4,16 @@
  */
 package com.hbc.qa.lib.iib.model.insight;
 
-import com.hbc.qa.lib.iib.model.insightType.InsightType;
+import com.hbc.qa.lib.iib.model.token.TokenRequest;
 
 public class InsightResponse extends Insight {
-	private InsightType insightType;
+	private TokenRequest insightType;
 
-	public InsightType getInsightType() {
+	public TokenRequest getInsightType() {
 		return insightType;
 	}
 
-	public void setInsightType(InsightType insightType) {
+	public void setInsightType(TokenRequest insightType) {
 		this.insightType = insightType;
 	}
 
@@ -26,7 +26,7 @@ public class InsightResponse extends Insight {
 	@Override
 	public boolean equals(Object responseObj) {
 		Boolean equalityCheckFlag = false;
-		InsightType insightTypeFromResponseObj = ((InsightResponse) responseObj).getInsightType();
+		TokenRequest insightTypeFromResponseObj = ((InsightResponse) responseObj).getInsightType();
 
 		if (super.equals(responseObj) && this.insightType.equals(insightTypeFromResponseObj))
 			equalityCheckFlag = true;

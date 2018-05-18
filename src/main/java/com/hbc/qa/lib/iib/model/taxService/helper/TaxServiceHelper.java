@@ -54,6 +54,9 @@ public class TaxServiceHelper {
 	public TaxServiceRequest prepareTaxServiceRequestForGivenLineItems(String order_number, String banner_code,String country_code, String store_number, String postal_code, String state_province, String city, String tax_exempt_flag, List<TaxServiceLineItem> line_item) {
 		initDefaultTaxServiceRequest();
 		taxService.setOrder_number(order_number);
+		taxService.setBanner_code(banner_code);
+		taxService.setCountry_code(country_code);
+		taxService.setCity(city);
 		taxService.setPostal_code(postal_code);
 		taxService.setState_province(state_province);
 		taxService.setStore_number(store_number);

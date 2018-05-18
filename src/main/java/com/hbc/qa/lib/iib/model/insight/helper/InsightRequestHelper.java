@@ -4,17 +4,17 @@
  */
 package com.hbc.qa.lib.iib.model.insight.helper;
 
-import com.hbc.qa.lib.iib.common.InsightTypeUtil;
-import com.hbc.qa.lib.iib.model.insightType.helper.AttributeDataType;
+import com.hbc.qa.lib.iib.common.TokenUtil;
+import com.hbc.qa.lib.iib.model.token.TokenRequest;
+import com.hbc.qa.lib.iib.model.token.helper.AttributeDataType;
 import com.hbc.qa.lib.iib.common.TenantUtil;
 import com.hbc.qa.lib.iib.model.insight.InsightRequest;
-import com.hbc.qa.lib.iib.model.insightType.InsightType;
 import com.hbc.qa.lib.iib.model.tenant.Tenant;
 import static com.hbc.qa.lib.common.BaseHelper.getCurrentTimeStamp;
 
 public class InsightRequestHelper {
 	InsightRequest insight = null;
-	InsightTypeUtil insightTypeUtil = null;
+	TokenUtil tokenUtil = null;
 	TenantUtil tenantUtil = null;
 
 
@@ -28,15 +28,14 @@ public class InsightRequestHelper {
 	}
 
 	public InsightRequest getInsightWithCreatingInsightTypeAndTenant(String insightTypeFlavor, AttributeDataType attributeDataType) {
-		insightTypeUtil = new InsightTypeUtil();
+		tokenUtil = new TokenUtil();
 		tenantUtil = new TenantUtil();
 
-		InsightType insightType = insightTypeUtil.createInsightType(insightTypeFlavor, attributeDataType);
-		String insightTypeId = insightType.getInsightTypeId();
+		TokenRequest tokenRequest = tokenUtil.createInsightType(insightTypeFlavor);
 
 		Tenant tenant = tenantUtil.createTenant();
 		String tenantId = tenant.getTenantId();
 
-		return getInsightWithPredefinedInsightTypeAndTenant(insightTypeId, tenantId);
+		return getInsightWithPredefinedInsightTypeAndTenant("insightTypeId", tenantId);
 	}
 }

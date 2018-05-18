@@ -2,7 +2,7 @@
  * © HBC Shared Services QA 2018. All rights reserved.
  * CONFIDENTIAL AND PROPRIETARY INFORMATION OF HBC.
  */
-package com.hbc.qa.lib.iib.model.insightType;
+package com.hbc.qa.lib.iib.model.token;
 
 import com.hbc.qa.lib.common.Links;
 import org.apache.log4j.Logger;

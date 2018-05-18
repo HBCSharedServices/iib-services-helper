@@ -2,7 +2,7 @@
  * © Qio Technologies Ltd. 2016. All rights reserved.
  * CONFIDENTIAL AND PROPRIETARY INFORMATION OF QIO TECHNOLOGIES LTD.
  */
-package com.hbc.qa.lib.iib.apiHelpers.insights;
+package com.hbc.qa.lib.iib.apiHelpers.token;
 
 
 import com.hbc.qa.lib.apiHelpers.APIRequestHelper;

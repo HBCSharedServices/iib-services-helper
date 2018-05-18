@@ -6,7 +6,7 @@ package com.hbc.qa.lib.iib.model.token;
 
 import java.util.Objects;
 
-public class token {
+public class TokenRequest {
 	private String banner;
 	private String cardNumber;
 
@@ -32,7 +32,7 @@ public class token {
 
 	@Override
 	public String toString() {
-		return "token{" +
+		return "TokenRequest{" +
 				"banner='" + banner + '\'' +
 				", cardNumber='" + cardNumber + '\'' +
 				'}';
@@ -42,7 +42,7 @@ public class token {
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
-		token token = (token) o;
+		TokenRequest token = (TokenRequest) o;
 		return Objects.equals(banner, token.banner) &&
 				Objects.equals(cardNumber, token.cardNumber);
 	}
