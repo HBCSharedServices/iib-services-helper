@@ -63,19 +63,16 @@ public class TokenResponse {
 			this.banner = banner;
 		}
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (!(o instanceof TokenResponse)) return false;
-		TokenResponse that = (TokenResponse) o;
-		return Objects.equals(responseMessage, that.responseMessage) &&
-				Objects.equals(responseCode, that.responseCode) &&
-				Objects.equals(token, that.token) &&
-				Objects.equals(cardNumber, that.cardNumber) &&
-				Objects.equals(banner, that.banner);
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TokenResponse)) return false;
+        TokenResponse that = (TokenResponse) o;
+        return Objects.equals(cardNumber, that.cardNumber) &&
+                Objects.equals(banner, that.banner);
+    }
 
-	@Override
+    @Override
 	public int hashCode() {
 		return Objects.hash(responseMessage, responseCode, token, cardNumber, banner);
 	}

@@ -41,10 +41,10 @@ public class TokenRequest {
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		TokenRequest token = (TokenRequest) o;
-		return Objects.equals(banner, token.banner) &&
-				Objects.equals(cardNumber, token.cardNumber);
+		if (!(o instanceof TokenRequest)) return false;
+		TokenRequest that = (TokenRequest) o;
+		return Objects.equals(banner, that.banner) &&
+				Objects.equals(cardNumber, that.cardNumber);
 	}
 
 	@Override
