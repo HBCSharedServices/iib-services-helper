@@ -4,6 +4,10 @@
  */
 package com.hbc.qa.lib.iib.model.token;
 
+import com.hbc.qa.lib.iib.model.tenant.Tenant;
+import org.apache.log4j.Logger;
+
+import java.lang.reflect.Field;
 import java.util.Objects;
 
 public class TokenRequest {
@@ -39,17 +43,37 @@ public class TokenRequest {
 	}
 
 	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (!(o instanceof TokenRequest)) return false;
-		TokenRequest that = (TokenRequest) o;
-		return Objects.equals(banner, that.banner) &&
-				Objects.equals(cardNumber, that.cardNumber);
+	public boolean equals(Object responseObj) {
+		Logger logger = Logger.getRootLogger();
+		Boolean equalityCheckFlag = true;
+		try {
+
+			if (!(responseObj instanceof Tenant) || responseObj == null)
+				return false;
+
+			Field[] fields = TokenResponse.class.getDeclaredFields();
+			for (Field field : fields) {
+				Object requestVal = field.get(this);
+				Object responseVal = field.get(responseObj);
+				if (requestVal != null)
+					if (!requestVal.equals(responseVal)) {
+						equalityCheckFlag = false;
+						logger.error("Class Name: " + this.getClass().getName() + " --> Match failed on property: "
+								+ field.getName() + ", Request Value: " + requestVal + ", Response Value: "
+								+ responseVal);
+						break;
+					}
+			}
+		} catch (IllegalArgumentException e) {
+			logger.error(e.getMessage());
+		} catch (IllegalAccessException e) {
+			logger.error(e.getMessage());
+		}
+		return equalityCheckFlag;
 	}
 
 	@Override
 	public int hashCode() {
-
 		return Objects.hash(banner, cardNumber);
 	}
 }
