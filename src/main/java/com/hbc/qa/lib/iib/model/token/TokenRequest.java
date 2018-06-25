@@ -4,9 +4,7 @@
  */
 package com.hbc.qa.lib.iib.model.token;
 
-import com.hbc.qa.lib.iib.model.tenant.Tenant;
 import org.apache.log4j.Logger;
-
 import java.lang.reflect.Field;
 import java.util.Objects;
 
@@ -48,7 +46,7 @@ public class TokenRequest {
 		Boolean equalityCheckFlag = true;
 		try {
 
-			if (!(responseObj instanceof Tenant) || responseObj == null)
+			if (!(responseObj instanceof TokenRequest) || responseObj == null)
 				return false;
 
 			Field[] fields = TokenResponse.class.getDeclaredFields();

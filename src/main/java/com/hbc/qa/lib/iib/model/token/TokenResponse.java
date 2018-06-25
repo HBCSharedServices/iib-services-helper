@@ -68,7 +68,10 @@ public class TokenResponse {
         if (this == o) return true;
         if (!(o instanceof TokenResponse)) return false;
         TokenResponse that = (TokenResponse) o;
-        return Objects.equals(cardNumber, that.cardNumber) &&
+        return Objects.equals(responseMessage, that.responseMessage) &&
+                Objects.equals(responseCode, that.responseCode) &&
+                Objects.equals(token, that.token) &&
+                Objects.equals(cardNumber, that.cardNumber) &&
                 Objects.equals(banner, that.banner);
     }
 
