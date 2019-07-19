@@ -49,7 +49,7 @@ public class TokenRequest {
 			if (!(responseObj instanceof TokenRequest) || responseObj == null)
 				return false;
 
-			Field[] fields = TokenResponse.class.getDeclaredFields();
+			Field[] fields = TokenRequest.class.getDeclaredFields();
 			for (Field field : fields) {
 				Object requestVal = field.get(this);
 				Object responseVal = field.get(responseObj);
@@ -57,7 +57,7 @@ public class TokenRequest {
 					if (!requestVal.equals(responseVal)) {
 						equalityCheckFlag = false;
 						logger.error("Class Name: " + this.getClass().getName() + " --> Match failed on property: "
-								+ field.getName() + ", Request Value: " + requestVal + ", Response Value: "
+								+ field.getName() + ", BillToInRequest Value: " + requestVal + ", Response Value: "
 								+ responseVal);
 						break;
 					}

@@ -4,6 +4,9 @@
  */
 package com.hbc.qa.lib.iib.model.token;
 
+import org.apache.log4j.Logger;
+
+import java.lang.reflect.Field;
 import java.util.Objects;
 
 public class TokenResponse {
@@ -13,7 +16,7 @@ public class TokenResponse {
 	private String cardNumber;
 	private String banner;
 
-	public String getResponseMessage ()
+    public String getResponseMessage ()
     {
 			return responseMessage;
     }
@@ -63,7 +66,7 @@ public class TokenResponse {
 			this.banner = banner;
 		}
 
-    @Override
+		/* @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof TokenResponse)) return false;
@@ -73,7 +76,40 @@ public class TokenResponse {
                 Objects.equals(token, that.token) &&
                 Objects.equals(cardNumber, that.cardNumber) &&
                 Objects.equals(banner, that.banner);
-    }
+    } */
+
+	@Override
+	public boolean equals(Object responseObj) {
+		Logger logger = Logger.getRootLogger();
+		Boolean equalityCheckFlag = true;
+		try {
+
+			if (!(responseObj instanceof TokenResponse) || responseObj == null)
+				return false;
+
+			Field[] fields = TokenResponse.class.getDeclaredFields();
+			for (Field field : fields) {
+				Object requestVal = field.get(this);
+				Object responseVal = field.get(responseObj);
+				logger.info("Class Name: " + this.getClass().getName() + " --> Match failed on property: "
+						+ field.getName() + ", BillToInRequest Value: " + requestVal + ", Response Value: "
+						+ responseVal);
+				if (requestVal != null)
+					if (!requestVal.equals(responseVal)) {
+						equalityCheckFlag = false;
+						logger.error("Class Name: " + this.getClass().getName() + " --> Match failed on property: "
+								+ field.getName() + ", BillToInRequest Value: " + requestVal + ", Response Value: "
+								+ responseVal);
+						break;
+					}
+			}
+		} catch (IllegalArgumentException e) {
+			logger.error(e.getMessage());
+		} catch (IllegalAccessException e) {
+			logger.error(e.getMessage());
+		}
+		return equalityCheckFlag;
+	}
 
     @Override
 	public int hashCode() {

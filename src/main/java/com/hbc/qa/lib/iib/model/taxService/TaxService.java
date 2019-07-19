@@ -161,7 +161,7 @@ public class TaxService {
 					if (!requestVal.equals(responseVal)) {
 						equalityCheckFlag = false;
 						logger.error("Class Name: " + this.getClass().getName() + " --> Match failed on property: "
-								+ field.getName() + ", Request Value: " + requestVal + ", Response Value: "
+								+ field.getName() + ", BillToInRequest Value: " + requestVal + ", Response Value: "
 								+ responseVal);
 						break;
 					}

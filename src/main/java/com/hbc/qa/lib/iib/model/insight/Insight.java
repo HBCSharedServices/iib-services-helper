@@ -181,7 +181,7 @@ public abstract class Insight {
 					logger.info("Checking value of field " + fieldName);
 					if (!requestVal.equals(responseVal)) {
 						equalityCheckFlag = false;
-						logger.error("Class Name: " + this.getClass().getName() + " --> Match failed on property: " + fieldName + ", Request Value: " + requestVal + ", Response Value: " + responseVal);
+						logger.error("Class Name: " + this.getClass().getName() + " --> Match failed on property: " + fieldName + ", BillToInRequest Value: " + requestVal + ", Response Value: " + responseVal);
 						break;
 					}
 				}
