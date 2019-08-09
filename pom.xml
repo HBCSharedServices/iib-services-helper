@@ -89,7 +89,7 @@
                         <includePublishedArtifacts>true</includePublishedArtifacts>
                         <runChecks>true</runChecks>
                         <scopes>runtime</scopes>
-                        <violationRecipients>effie.karageorgos@hbc.com</violationRecipients>
+                        <violationRecipients>so.andso@thecompany.com</violationRecipients>
                     </licenses>
                 </configuration>
             </plugin>
@@ -98,11 +98,11 @@
                 <artifactId>license-maven-plugin</artifactId>
                 <version>2.3</version>
                 <configuration>
-                    <header>HBC_License.txt</header>
+                    <header>TheCompany_License.txt</header>
                     <aggregate>true</aggregate>
                     <properties>
-                        <owner>HBC Techonologies</owner>
-                        <email>admin@qio.io</email>
+                        <owner>TheCompany Techonologies</owner>
+                        <email>admin@thecompany.io</email>
                         <project.inceptionYear>2016</project.inceptionYear>
                     </properties>
                     <includes>
