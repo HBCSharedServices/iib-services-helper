@@ -102,7 +102,7 @@
                     <aggregate>true</aggregate>
                     <properties>
                         <owner>TheCompany Techonologies</owner>
-                        <email>admin@thecompany.io</email>
+                        <email>admin@thecompany.com</email>
                         <project.inceptionYear>2016</project.inceptionYear>
                     </properties>
                     <includes>
