@@ -5,7 +5,6 @@
 package com.thecompany.qa.lib.iib.model.token;
 
 import org.apache.log4j.Logger;
-
 import java.lang.reflect.Field;
 import java.util.Objects;
 

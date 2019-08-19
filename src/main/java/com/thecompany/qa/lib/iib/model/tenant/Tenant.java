@@ -1,13 +1,14 @@
 /**
- * © HBC Shared Services QA 2018. All rights reserved.
- * CONFIDENTIAL AND PROPRIETARY INFORMATION OF HBC.
+ * © TheCompany QA 2019. All rights reserved.
+ * CONFIDENTIAL AND PROPRIETARY INFORMATION OF TheCompany.
  */
+
 package com.thecompany.qa.lib.iib.model.tenant;
 
 import com.hbc.qa.lib.common.Links;
+
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.annotate.JsonProperty;
-
 import java.lang.reflect.Field;
 
 public class Tenant {

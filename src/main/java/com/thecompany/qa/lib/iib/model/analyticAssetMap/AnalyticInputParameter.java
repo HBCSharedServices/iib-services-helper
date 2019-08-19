@@ -4,9 +4,10 @@
  */
 package com.thecompany.qa.lib.iib.model.analyticAssetMap;
 
+import com.thecompany.qa.lib.common.Links;
+
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.annotate.JsonProperty;
-import com.thecompany.qa.lib.common.Links;
 import java.lang.reflect.Field;
 
 public class AnalyticInputParameter implements Comparable {
