@@ -1,5 +1,5 @@
 /**
- * © TheCompanyX QA 2019. All rights reserved.
+ * © TheCompany QA 2019. All rights reserved.
  * CONFIDENTIAL AND PROPRIETARY INFORMATION OF TheCompany.
  */
 package com.thecompany.qa.lib.iib.apiHelpers.analytics;
