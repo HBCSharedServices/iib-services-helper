@@ -1,2 +1,2 @@
-def object = new org.hbc.jenkins2.pipeline()
-object.api_test_util("http://usnc1a-dgit01.hbc.internal/QA/iib-services-helper.git")
+def object = new org.thecompany.jenkins2.pipeline()
+object.services-helper("http://usnc1a-dgit01.thecompany.internal/QA/services-helper.git")
