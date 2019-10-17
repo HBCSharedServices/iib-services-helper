@@ -99,7 +99,7 @@
                 <version>2.3</version>
                 <configuration>
                     <header>TheCompany_License.txt</header>
-                    <aggregate>true</aggregate>
+                    <aggregate>false</aggregate>
                     <properties>
                         <owner>TheCompany Techonologies</owner>
                         <email>admin@thecompany.com</email>
