@@ -1,7 +1,9 @@
 /**
- * © TheCompany QA 2019. All rights reserved.
- * CONFIDENTIAL AND PROPRIETARY INFORMATION OF TheCompany.
- */
+ * /**
+ *  * © TheCompany QA 2019. All rights reserved.
+ *  * CONFIDENTIAL AND PROPRIETARY INFORMATION OF TheCompany.
+ *  */
+
 package com.thecompany.qa.lib.iib.common;
 
 import com.thecompany.qa.lib.iib.apiHelpers.token.MTokenRequestAPIHelper;
