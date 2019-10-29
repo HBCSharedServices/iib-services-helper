@@ -5,7 +5,7 @@
 
 package com.thecompany.qa.lib.iib.apiHelpers.dictionary;
 
-import com.thecompany.qa.lib.apiHelpers.APIRequestHelper;
+import com.thecompany.qa.lib.apiHelpers.APIHeaderRequestHelper;
 import com.thecompany.qa.lib.common.MBaseAPIHelper;
 import com.thecompany.qa.lib.connection.ConnectionResponse;
 import org.apache.log4j.Logger;
@@ -18,33 +18,33 @@ public class MDictionaryAPIHelper extends MBaseAPIHelper {
 
     final static Logger logger = Logger.getRootLogger();
 	
-	public ConnectionResponse create(String microservice, String environment, String tenantId, String payload, APIRequestHelper apiRequestHeaders){
+	public ConnectionResponse create(String microservice, String environment, String tenantId, String payload, APIHeaderRequestHelper apiHeaderRequestHelper){
         String createTenantEndpointN = createDictionary.replace("{tenantId}", tenantId);
-		return super.create(microservice, environment, createTenantEndpointN, payload, apiRequestHeaders);
+		return super.create(microservice, environment, createTenantEndpointN, payload, apiHeaderRequestHelper);
 	}
 	
-	public void delete(String microservice, String environment, String tenantId, String tag, APIRequestHelper apiRequestHeaders) {
-		super.delete(microservice, environment, replaceTagAndTenantIdInSingleDictionary(tenantId, tag), apiRequestHeaders);
+	public void delete(String microservice, String environment, String tenantId, String tag, APIHeaderRequestHelper apiHeaderRequestHelper) {
+		super.delete(microservice, environment, replaceTagAndTenantIdInSingleDictionary(tenantId, tag), apiHeaderRequestHelper);
 	}
 
-	public void delete(String microservice, String environment, String tenantId, APIRequestHelper apiRequestHeaders) {
-		super.delete(microservice, environment, replaceTenantIdIdInSingleTenantDictionary(tenantId), apiRequestHeaders);
+	public void delete(String microservice, String environment, String tenantId, APIHeaderRequestHelper apiHeaderRequestHelper) {
+		super.delete(microservice, environment, replaceTenantIdIdInSingleTenantDictionary(tenantId), apiHeaderRequestHelper);
 	}
 
-	public ConnectionResponse update(String microservice, String environment, String tenantId, String tag, String payload, APIRequestHelper apiRequestHeaders) {
-		return super.update(microservice, environment, replaceTagAndTenantIdInSingleDictionary(tenantId, tag), payload, apiRequestHeaders);
+	public ConnectionResponse update(String microservice, String environment, String tenantId, String tag, String payload, APIHeaderRequestHelper apiHeaderRequestHelper) {
+		return super.update(microservice, environment, replaceTagAndTenantIdInSingleDictionary(tenantId, tag), payload, apiHeaderRequestHelper);
 	}
 	
-	public ConnectionResponse retrieve(String microservice, String environment, String tenantId, String tag, APIRequestHelper apiRequestHeaders) {
-		return super.retrieve(microservice, environment, replaceTagAndTenantIdInSingleDictionary(tenantId, tag), apiRequestHeaders);
+	public ConnectionResponse retrieve(String microservice, String environment, String tenantId, String tag, APIHeaderRequestHelper apiHeaderRequestHelper) {
+		return super.retrieve(microservice, environment, replaceTagAndTenantIdInSingleDictionary(tenantId, tag), apiHeaderRequestHelper);
 	}
 
-	public ConnectionResponse retrieve(String microservice, String environment, String tenantId, APIRequestHelper apiRequestHeaders) {
-		return super.retrieve(microservice, environment, replaceTenantIdIdInSingleTenantDictionary(tenantId), apiRequestHeaders);
+	public ConnectionResponse retrieve(String microservice, String environment, String tenantId, APIHeaderRequestHelper apiHeaderRequestHelper) {
+		return super.retrieve(microservice, environment, replaceTenantIdIdInSingleTenantDictionary(tenantId), apiHeaderRequestHelper);
 	}
 
-	public ConnectionResponse retrieve(String microservice, String environment, APIRequestHelper apiRequestHeaders) {
-		return super.retrieve(microservice, environment, getAllDictionaries, apiRequestHeaders);
+	public ConnectionResponse retrieve(String microservice, String environment, APIHeaderRequestHelper apiHeaderRequestHelper) {
+		return super.retrieve(microservice, environment, getAllDictionaries, apiHeaderRequestHelper);
 	}
 
 	private String replaceTagAndTenantIdInSingleDictionary(String tenantId, String tag) {

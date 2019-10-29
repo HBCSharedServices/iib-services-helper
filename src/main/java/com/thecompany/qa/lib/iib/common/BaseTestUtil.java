@@ -5,10 +5,10 @@
 
 package com.thecompany.qa.lib.iib.common;
 
+import com.thecompany.qa.lib.apiHelpers.APIHeaderRequestHelper;
 import org.apache.log4j.Logger;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
-import com.thecompany.qa.lib.apiHelpers.APIRequestHelper;
 
 public class BaseTestUtil {
 	protected String userName;
@@ -16,7 +16,7 @@ public class BaseTestUtil {
 	protected String environment;
 	protected final String oauthMicroserviceName = "idm";
 	protected String envRuntime;
-	protected APIRequestHelper apiRequestHelper;
+	protected APIHeaderRequestHelper apiHeaderRequestHelper;
 	protected Config userConfig;
 	protected Config envConfig;
 	protected Config microserviceConfig;
@@ -42,7 +42,7 @@ public class BaseTestUtil {
 		environment = envConfig.getString("env.name" + "." + envRuntime);
 		
 		String oauthMicroservice = microserviceConfig.getString(oauthMicroserviceName + "." + envRuntime);
-		apiRequestHelper = new APIRequestHelper(userName, password, oauthMicroservice);
+		apiHeaderRequestHelper = new APIHeaderRequestHelper(userName, password, oauthMicroservice);
 	}
 
 	public void baseInitLoadConfigurationFiles() {

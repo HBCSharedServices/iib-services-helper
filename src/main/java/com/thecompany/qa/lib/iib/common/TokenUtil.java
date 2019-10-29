@@ -35,6 +35,6 @@ public class TokenUtil extends BaseTestUtil {
 		default:
 			tokenRequest = tokenHelper.getTokenRequest();
 		}
-		return MAbstractAPIHelper.getResponseObjForCreate(tokenRequest, tokenizationMicroservice, environment, apiRequestHelper, insightTypeAPI, TokenRequest.class);
+		return MAbstractAPIHelper.getResponseObjForCreate(tokenRequest, tokenizationMicroservice, environment, apiHeaderRequestHelper, insightTypeAPI, TokenRequest.class);
 	}
 }
